@@ -1,0 +1,142 @@
+
+
+
+$primary-color: #e2e2e2; 
+$nav-height: 60px; 
+
+.navbar {
+  background-color: $primary-color;
+  height: $nav-height;
+  display: flex;
+  // justify-content: space-between;
+  align-items: right;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 0;
+  z-index: 1020;
+  flex-wrap: wrap;
+
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+
+  .secondary-navbar {
+    background-color: #0f0f0fec;
+    display: flex;
+    animation: slideDown 0.5s ease-out forwards;
+    position: absolute; 
+    width: 100%; 
+    top: 100%; 
+    left: 0;
+  }
+
+ 
+
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+
+
+  .nav-item .link {
+    display: inline-block; 
+    height: 100%;
+    background-color: #0f0f0fec; 
+    color: white; 
+    text-align: center;
+    padding: 1px 45px; 
+    margin: 0 10px; 
+    text-decoration: none;
+    border: none; 
+    border-radius: 0;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color:  #e2e2e2;
+      color: rgb(0, 0, 0); 
+      text-transform: lowercase;
+      border: 1px solid black; 
+    }
+
+    &.active {
+      background-color: #e2e2e2;
+      color: rgb(0, 0, 0); 
+      text-transform: lowercase;
+      border: 1px solid black; 
+    }
+
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -15px; 
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0%;
+      border-bottom: 2px solid #e2e2e2; 
+      transition: width 0.3s ease; 
+    }
+
+    &:hover:after {
+      width: 90%;
+    }
+
+
+    li {
+      margin: 0 15px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) { 
+    .secondary-navbar {
+      display: none;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+   
+  .nav-item .link {
+    display: inline-block;
+    height: 100%;
+    background-color: #0f0f0fec; 
+    color: white; 
+    text-align: center;
+    padding: 5px 5px; 
+    margin: 0 1px; 
+    text-decoration: none;
+    border: none; 
+    border-radius: 0;
+    box-sizing: border-box;
+
+ 
+  
+  }
+
+  
+    
+  }
+  }
