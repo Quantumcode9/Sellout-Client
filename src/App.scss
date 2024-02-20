@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lucida+Sans&display=swap');
 @import './components/shared/_Header.scss';
+@import './components/tvs/TvShow.scss';
 
 
 .App {
@@ -17,11 +18,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-
-
-
-
 
 
 

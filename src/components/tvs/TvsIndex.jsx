@@ -52,15 +52,16 @@ const TVsIndex = (props) => {
         return <p>No tvs yet</p>
     }
 
-    const cardStyle = {
-        width: '30%',
-        '@media (minWidth: 576px)': {
-            width: '50%' 
-        },
-        margin: '10px',
+    const cardStyle  = {
+        width: '18rem',
+        margin: '1rem',
         backgroundColor: 'white',
-        color: 'black'
+        color: 'black',
+        fontFamily: 'Lucida Sans ,Lucida Sans Regular'
     }
+
+
+
 
 
 

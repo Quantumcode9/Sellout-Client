@@ -1,0 +1,73 @@
+
+.hero-soundbar { 
+    position: relative;
+    width: 300%;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 3rem;
+    font-family: 'Lucida Sans ,Lucida Sans Regular';
+
+}
+
+.soundbar-card {
+    width: 1000px;  
+    height: 500px; 
+    overflow: hidden;
+  }
+  
+  .soundbar-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+
+  }
+
+
+    .my-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+
+    .soundbar-container {
+      display: flex;
+      flex-wrap: wrap;
+    
+      @media (max-width: 600px) { 
+        align-items: center;
+      }
+    }
+    
+    .soundbar-card {
+      width: 105%;
+      margin: 2.5%;
+    
+      @media (max-width: 600px) { /* adjust as needed */
+        width:100%; /* adjust as needed */
+      }
+    }
+
+    .soundbar-link {
+      text-decoration: none;
+      color: inherit;
+      width: 45%;
+      margin: 2.5%;
+    
+      @media (max-width: 576px) { /* adjust as needed */
+        width: 100%;
+      }
+    }

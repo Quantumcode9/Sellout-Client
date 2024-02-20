@@ -6,7 +6,7 @@ import messages from '../../shared/AutoDismissAlert/messages'
 import EditSoundbarModal from '../EditSoundbarModal'
 import { useParams } from 'react-router-dom'
 import { addToCart } from '../../../api/cart'
-import './SoundbarShow.css'
+import './SoundbarShow.scss'
 
 const SoundbarShow = (props) => {
   const [soundbar, setSoundbar] = useState(null);
@@ -35,47 +35,23 @@ const SoundbarShow = (props) => {
     };
   }, [id]);
 
-    const handleEdit = () => {
-      setEditModalShow(true);
-    };
-  
-    const handleRemove = () => {
-        removeSoundbar(user, soundbar._id)
-            .then(() => {
-            msgAlert({
-                heading: 'Soundbar Deleted',
-                message: messages.removeSoundbarSuccess,
-                variant: 'success'
-            });
-            triggerRefresh();
-            })
-            .catch(() => {
-            msgAlert({
-                heading: 'Soundbar Deletion Failed',
-                message: messages.removeSoundbarFailure,
-                variant: 'danger'
-            });
-            });
-    };
-    const [cartItems, setCartItems] = useState([])
-    const handleAddToCart = () => {
-      addToCart(user, soundbar._id)
-        .then(response => {
-          msgAlert({
-            heading: 'Added to Cart!',
-            message: 'Added to cart successfully!',
-            variant: 'success'
+  const handleAddToCart = (soundbarId) => {
+    addToCart(user, soundbarId)
+      .then(() => {
+        msgAlert({
+          heading: 'Soundbar Added to Cart',
+          message: messages.addToCartSuccess,
+          variant: 'success'
         })
-        setCartItems(response.data.cartItems)
+      })
+      .catch(() => {
+        msgAlert({
+          heading: 'Soundbar Add to Cart Failed',
+          message: messages.addToCartFailure,
+          variant: 'danger'
         })
-        .catch(() => {
-          msgAlert({
-            heading: 'Oh no!',
-            message: messages.generalError,
-            variant: 'danger'
-        })
-        })
-    }
+      })
+  }
 
   
     if (!soundbar) {
@@ -85,26 +61,23 @@ const SoundbarShow = (props) => {
 
   return (
     <>
-    <Container style={{ backgroundColor: 'black' }} className='m-2'>
-      <Card>
-        <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+    <Container className='hero-soundbar' style={{ backgroundColor: '`rgba(0,0,0,0.95)`' }} >
+      <Card className="soundbar2-card">
+        <Card.Header style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
           {soundbar.brand} {soundbar.modelNumber}
         </Card.Header>
-        <Card.Body>
+        <Card.Body style={{ overflow: 'hidden' }}>
           <img src={soundbar.image2 ? soundbar.image2 : soundbar.image} alt={soundbar.modelNumber} className='soundbar-image'/>
         </Card.Body>
-        <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        <Card.Footer style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
           {soundbar.brand} {soundbar.modelNumber}
         </Card.Footer>
       </Card>
     </Container>
-    <br />
-  
-
-      <Container className='m-2'>
+      <Container>
       <Row>
         <Col md={6}>
-        <Card>
+        <Card className="sound-card">
         <Card.Header style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
             {soundbar.brand} { soundbar.modelNumber}
             </Card.Header>
@@ -115,7 +88,7 @@ const SoundbarShow = (props) => {
             </Card.Body>
             <Card.Footer style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
         <Container className='m-2'>
-        <Button variant='primary' onClick={() => setEditModalShow(true)}>Edit</Button>
+        {/* <Button variant='primary' onClick={() => setEditModalShow(true)}>Edit</Button>
         <Button variant='danger' onClick={() => removeSoundbar(user, soundbar._id)
           .then(() => {
             msgAlert({
@@ -132,8 +105,8 @@ const SoundbarShow = (props) => {
               variant: 'danger'
             })
           })}>Delete</Button>
-        <Button variant='success' onClick={() => handleAddToCart(soundbar._id)
-        }>Add to Cart</Button>
+        <Button variant='success' onClick={() => handleAddToCart(soundbar.id)
+        }>Add to Cart</Button> */}
         
         
       </Container>
@@ -150,13 +123,13 @@ const SoundbarShow = (props) => {
         </Card>
         </Col>
         <Col md={6}>
-        <Card>
+        <Card className='sound-card'>
 
         <Card.Header style= {{ backgroundColor: 'white', color: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular', border: '2px solid black' }}>
                       Details
                     </Card.Header>
-            <Card.Body style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-
+         <Card.Body className="sound-card-body"> 
+              
                     <p>Price: $<strong>{soundbar.price}.99</strong></p>
                     <p>Channels: <strong>{soundbar.channels}</strong></p>
                     <p>

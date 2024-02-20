@@ -17,7 +17,9 @@ const messages = {
 	// update soundbar success
 	updateSoundbarSuccess: 'Updated the soundbar!',
 	// delete soundbar success
-	deleteSoundbarSuccess: 'We threw the soundbar away!',
+	deleteSoundbarSuccess: 'soundbar has been deleted!',
+	// item already added to cart
+	itemAlreadyAdded: 'Item already added to cart!',
 	// general error
 	generalError: 'Something went wrong... Try Again'
 }

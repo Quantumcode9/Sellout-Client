@@ -8,7 +8,7 @@ import { Container, Card, Button, Row, Col  } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditTVModal from './EditTvModal'
-import './TvShow.css'
+import './TvShow.scss'
 //import SoundbarShow from '../soundbars/SoundbarShow'
 import NewReviewModal from '../reviews/NewReviewModal'
 import EditReviewModal from '../reviews/EditReviewModel'
@@ -109,8 +109,8 @@ const TVShow = (props) => {
         .catch(err => {
             console.error(err);
             msgAlert({
-                heading: 'Oh no!',
-                message: messages.generalError,
+                heading: 'Slow down!',
+                message: messages.itemAlreadyAdded,
                 variant: 'danger'
             })
         });
@@ -146,14 +146,12 @@ const TVShow = (props) => {
     return (
         <>
         <Container className='hero'>
-            <Card>
+            <Card className="my-card">
             <Card.Header style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                     {tv.brand} { tv.modelNumber}
                     </Card.Header>
-                    <Card.Body>
-                        
-                    <img src={tv.image2 ? tv.image2 : tv.image} alt={tv.modelNumber} className='tv-image'/>
-
+                    <Card.Body style={{ overflow: 'hidden' }}>
+                        <img src={tv.image2 ? tv.image2 : tv.image} alt={tv.modelNumber} className='tv-image'/>
                     </Card.Body>
                     <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                     {tv.brand} { tv.modelNumber}
@@ -222,9 +220,9 @@ const TVShow = (props) => {
         Features
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-        <ul>
+        <Card.Text>
             {tv.features}
-        </ul>
+        </Card.Text>
         </Card.Body>
     </Card>
     <br/>
@@ -258,7 +256,7 @@ const TVShow = (props) => {
         </Card.Text>
     </Col>
     </Row>
-    <hr/>
+
 </Card.Body>
 </Card>
     </Col>
@@ -269,10 +267,10 @@ const TVShow = (props) => {
     <Col md={6}>
                 <Card>
                 <Card.Header style={{ color: 'black', backgroundColor: `rgba(255,255,255,0.80)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        Details
+                        Tech Specs
                     </Card.Header>
     <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-        <Card.Text className="">
+        <Card.Text className="card-text">
             Size:<strong> {tv.size}"</strong><hr/> 
             Type:<strong> {tv.type}</strong> <hr/>
             Refresh Rate:<strong> {tv.refreshRate}hz</strong><hr/>
@@ -320,6 +318,7 @@ const TVShow = (props) => {
                         </Card.Text>
                     </Card.Body>
                 </Card>
+                <br/>
                 <Card>
                     <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                         User Reviews
@@ -339,6 +338,7 @@ const TVShow = (props) => {
                         </Card.Text>
                     </Card.Body>
                 </Card>
+                <br/>
                 
         
                 <Card>
@@ -358,7 +358,7 @@ const TVShow = (props) => {
                         <hr />
                         {user && review.user && user._id === review.user 
                     ? (
-                            <>
+                            <div>
                             <Button
                                 className='m-2'
                                 variant='warning'
@@ -379,19 +379,17 @@ const TVShow = (props) => {
                             >
                                 Delete Review
                             </Button>
-                            </>
+                            </div>
+                        
 
 
                         )
                         : null
                     }
-                        <hr />
                     </div>
                     ))}
                 </Card.Text>
                 </Card.Body>
-                <Card.Footer>
-                </Card.Footer>
                 </Card>
             
             </Col>
