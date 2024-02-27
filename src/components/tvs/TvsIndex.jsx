@@ -68,25 +68,23 @@ const TVsIndex = (props) => {
 
 
     const tvCards = tvs.map(tv => (
-        <Card key={tv.id} style={cardStyle}>
-<Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-{tv.modelNumber}</Card.Header>
-<img src={tv.image} alt={tv.modelNumber} style={{ width: '100%', marginTop: 6 }} />
-<Card.Body>
-    <Card.Text className="h5">
-        ${tv.price}.99
-    </Card.Text>
-
-        
-</Card.Body>
-
-<Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-    <Link to={`/tvs/${tv._id}`}>
-        <Button variant="dark">View</Button>
-    </Link>
-    </Card.Footer>
-</Card>
-    ))
+        <Link to={`/tvs/${tv._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Card key={tv.id} style={cardStyle}>
+            <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+              {tv.modelNumber}
+            </Card.Header>
+            <img src={tv.image} alt={tv.modelNumber} style={{ width: '100%', marginTop: 6 }} />
+            <Card.Body>
+              <Card.Text className="h5">
+                ${tv.price}.99
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+              View
+            </Card.Footer>
+          </Card>
+        </Link>
+      ))
 
     return (
         <div className="container-md" style={ cardContainerLayout }>

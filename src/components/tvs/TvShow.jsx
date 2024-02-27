@@ -334,7 +334,7 @@ const TVShow = (props) => {
                         >
                         Leave a Review!
                         </Button>
-                    Review: <span style={{ color: tv.overallRating >= 8 ? 'green' : tv.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{tv.overallRating}/10</strong></span>
+                   
                         </Card.Text>
                     </Card.Body>
                 </Card>

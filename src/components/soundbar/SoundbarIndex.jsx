@@ -13,18 +13,7 @@ const SoundbarIndex = () => {
   }, []);
 
 
-
-
-
-
-  
-
   return (
-
-
-
-
-
 
     <Container>
     <h1>Soundbars</h1>

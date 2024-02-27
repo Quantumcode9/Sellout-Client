@@ -87,7 +87,7 @@ const SoundbarShow = (props) => {
                 </Card.Text>
             </Card.Body>
             <Card.Footer style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-        <Container className='m-2'>
+        <Container className=''>
         {/* <Button variant='primary' onClick={() => setEditModalShow(true)}>Edit</Button>
         <Button variant='danger' onClick={() => removeSoundbar(user, soundbar._id)
           .then(() => {

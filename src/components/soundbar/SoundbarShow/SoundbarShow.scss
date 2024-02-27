@@ -19,9 +19,6 @@
 }
 
 
-
-
-
 .sound-card {
     position: relative;
     width: 100%;
@@ -66,3 +63,30 @@
 }
 
 
+
+.hero-soundbar { 
+  position: relative;
+  width: 300%;
+  height: 60vh;
+  overflow: hidden;
+  display: flex;
+
+  align-items: center;
+  color: #fff;
+  text-align: center;
+
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-soundbar {
+   display: none;
+  }
+  .sound-card {
+    width: 100%;
+    margin: 2.5%;
+  }
+
+  
+}

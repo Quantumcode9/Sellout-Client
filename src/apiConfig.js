@@ -2,7 +2,7 @@ let apiUrl
 const apiUrls = {
     // CHANGE PRODUCTION URL WHEN DEPLOYING
 	production: 'https://sellout-api.fly.dev',
-	development: 'https://sellout-api.fly.dev',
+	development: 'http://localhost:4000',
 }
 
 if (window.location.hostname === 'localhost') {

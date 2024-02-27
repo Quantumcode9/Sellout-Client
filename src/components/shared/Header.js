@@ -41,23 +41,23 @@ const unauthenticatedOptions = (
 const authenticatedOptions = (
 	<>
 
-		<Nav.Item className=''>
+		<Nav.Item className='nav-item'>
 		<Link to='/soundbars' className='link'>
 			    Soundbars
 		</Link>
 		</Nav.Item>
 	
 
-		<Nav.Item className=''>
+		<Nav.Item className='nav-item'>
 			<Link to='/search' className='link'>
 				Search
 			</Link>
 		</Nav.Item>
-		<Nav.Item className=''>
+		{/* <Nav.Item className=''>
 			<Link to='/cart' className='link'>
 				Your Cart
 			</Link>
-		</Nav.Item>
+		</Nav.Item> */}
 
 	</>
 )
@@ -66,7 +66,7 @@ const alwaysOptions = (
 	<>
 		<Nav.Item className=''>
 			<Link to='/' className='link'>
-				Home
+				TVs
 			</Link>
 		</Nav.Item>
 	</>
@@ -80,24 +80,31 @@ return (
 		SELLOUT
 	  </Link>
 	</Navbar.Brand>
-	
+	<Nav.Item className='welcome'>
 	{user && (
 		<span className='navbar-text mr-2'>Welcome, {user.name}</span>
 	  )}
+	</Nav.Item>
 
   {alwaysOptions}
   {user ? authenticatedOptions : unauthenticatedOptions}
 
-<Nav.Item className='m-2'>
+{/* <Nav.Item className='m-2'>
 	<button onClick={toggleAdminOptions}>Admin</button>
-</Nav.Item>
-<Nav.Item className='m-2'>
-	<button onClick={toggleUserOptions}>User</button>
+</Nav.Item> */}
+<Nav.Item className=''>
+	<button className='link' onClick={toggleUserOptions}>User</button>
 </Nav.Item>
   
 
     {showUserOptions && (
+		
 	<Navbar bg="" variant="l" className="secondary-navbar">
+		{/* <Nav.Item className=''>
+		{user && (
+		<span className='navbar-text mr-2 user'> {user.name}</span>
+	  )}
+	 </Nav.Item> */}
 	<Nav.Item className=''>
 		<Link to='change-password' className='link'>
 		Change Password
