@@ -13,6 +13,7 @@ function ProductShow() {
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate();
 
+
   useEffect(() => {
     getProduct(id)
       .then(res => {
@@ -91,13 +92,18 @@ function ProductShow() {
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
         {product.features.map(feature => (
-          <div key={feature._id}>
-           
-           <p className='feature-text' dangerouslySetInnerHTML={{ __html: feature.feature.replace(/&#\d+;/g, '') }}></p>
-           
-            <hr />  
-          </div>
-        ))}
+  <div key={feature._id}>
+    {feature.feature.split('\n').map((paragraph, index) => (
+      <Card.Text key={index}>
+        {index === 0 
+          ? <strong dangerouslySetInnerHTML={{ __html: paragraph }}></strong> 
+          : <span dangerouslySetInnerHTML={{ __html: paragraph }}></span>
+        }
+      </Card.Text>
+    ))}
+    <hr />  
+  </div>
+))}
         </Card.Body>
       </Card>
       </Col>
