@@ -25,9 +25,9 @@ const SoundbarIndex = () => {
               {soundbar.brand} {soundbar.modelNumber}
             </Card.Header>
             <Card.Img variant="top" src={soundbar.image} className="card-img" />
-            <Card.Body style={{ backgroundColor: 'black', color: 'white' }}>
+            <Card.Footer style={{ backgroundColor: 'black', color: 'white', marginTop: '5px' }}>
               <Card.Text>Price: ${soundbar.price}.99 </Card.Text>
-            </Card.Body>
+            </Card.Footer>
         
           </Card>
         </Link>

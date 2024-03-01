@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { searchProducts } from '../../api/product';
+import { searchProducts, createProduct } from '../../api/product';
 import { Link } from 'react-router-dom';
 import { Card, Button, Container, Carousel, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+
+import { addToCart } from '../../api/cart';
+import messages from '../shared/AutoDismissAlert/messages';
 
 // import { response } from 'express';
-
-
-
-
 
 
 
 const Search = () => {
     const [keyword, setKeyword] = useState(''); 
     const [products, setProducts] = useState([]);
+    const [productData, setProductData] = useState({});
 
     const handleSearch = (event) => {
         event.preventDefault();
         searchProducts(keyword)
         .then((response) => {
-            console.log('All this crap came through', response.data.products);
+            console.log('This came through', response.data.products);
             setProducts(response.data.products); 
         })
         .catch((error) => {
@@ -31,27 +35,94 @@ const Search = () => {
 
     const navigate = useNavigate();
 
-    const handleViewClick = (productId) => {
-      axios.get(`/api/products/${productId}`)
-        .then(response => {
-          if (response.status === 404) {
-            const product = products.find(product => product.id === productId);
-            axios.post('/api/products', { product })
-              .then(() => {
-                navigate(`/products/${productId}`);
-              })
-              .catch(error => {
-                console.error('Failed to create product:', error);
-              });
+
+    const handleInputChange = (event) => {
+      setProductData({
+        ...productData,
+        [event.target.name]: event.target.value
+      });
+    };
+  
+        const handleSubmit = (productData) => {
+      createProduct(productData)
+        .then(res => {
+          const id = res.data.product._id; 
+          if(id) {
+            navigate(`/products/${id}`);
           } else {
-            
-            navigate(`/products/${productId}`);
+            console.error("Product ID is undefined.", res.data);
           }
         })
-        .catch(error => {
-          console.error('Failed to get product:', error);
+        .catch(err => {
+          // handle error
         });
     };
+  
+    
+
+
+    // const handleViewClick = (productId) => {
+    //   axios.get(`/api/products/${productId}`)
+    //     .then(response => {
+    //       if (response.status === 404) {
+    //         const product = products.find(product => product.id === productId);
+    //         axios.post('/api/products', { product })
+    //           .then(() => {
+    //             navigate(`/products/${productId}`);
+    //           })
+    //           .catch(error => {
+    //             console.error('Failed to create product:', error);
+    //           });
+    //       } else {
+            
+    //         navigate(`/products/${productId}`);
+    //       }
+    //     })
+    //     .catch(error => {
+    //       console.error('Failed to get product:', error);
+    //     });
+    // };
+
+
+    const handleAddToCart = (productId) => {
+      addToCart(productId)
+        .then(() => {
+          console.log('Product added to cart');
+        })
+        .catch(() => {
+          console.error('Failed to add product to cart');
+        });
+    }
+
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1
+          }
+        }
+      ]
+    };
+
+
+
 
 
     return (
@@ -72,24 +143,39 @@ const Search = () => {
   </Form>
 </div>
 
-          
-<Carousel>
-  {products.map((product, index) => (
-    <Carousel.Item key={index}>
-      <Card style={{ transform: 'scale(0.6)' }}>
-        <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-          {product.name}
-        </Card.Header>
-        <Card.Text style={product.salePrice < product.regularPrice ? { textDecoration: 'line-through' } : {}}>${product.regularPrice}</Card.Text>
-        {product.salePrice < product.regularPrice && <Card.Text style={{ color: 'red' }}> ${product.salePrice}</Card.Text>}
-        <Card.Img src={product.image} alt={product.name} />
-        <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-        <Button variant="light" onClick={() => handleViewClick(product.id)}>View</Button>
-        </Card.Footer>
-      </Card>
-    </Carousel.Item>
+
+<div>
+
+<Slider {...settings}>
+  {products.map(product => (
+  <Card key={product.id} style={{ width: '18rem', height: '18rem', margin: '2rem', overflow: 'hidden' }}>
+  <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+    {product.name}
+  </Card.Header>
+  <Card.Img variant="top" src={product.image} className="card-img" />
+  <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', height: '5rem' }}>
+  <Card.Text style={{ color: 'black', textDecoration: product.salePrice < product.regularPrice ? 'line-through' : 'none' }}>
+    ${product.regularPrice}
+  </Card.Text>
+  {product.salePrice < product.regularPrice && <Card.Text style={{ color: 'red', overflow: 'hidden',marginLeft: '10px' }}> ${product.salePrice}</Card.Text>}
+</Card.Body>
+        <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
+        <Button variant="primary" onClick={() => handleSubmit(product)}>Create/View</Button>
+
+        <Button variant="dark" onClick={() => handleAddToCart(product.id)}>
+          Add to Cart 
+        </Button>
+      </Card.Footer>
+    </Card>
   ))}
-</Carousel>
+</Slider>
+
+
+
+</div>
+
+          
+
 
         
         </div>

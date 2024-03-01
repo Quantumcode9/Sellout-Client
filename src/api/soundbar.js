@@ -4,19 +4,6 @@ import axios from 'axios'
 
 
 
-
-// export const createTV = (user, newTV) => {
-//     return axios({
-//         url: `${apiUrl}/tvs`,
-//         method: 'POST',
-//         headers: {
-//             Authorization: `Token token=${user.token}`
-//         },
-//         data: { tv: newTV }
-//     })
-// }
-
-
 export const createSoundbar = (user, newSoundbar) => {
     return axios({
         url: `${apiUrl}/soundbars`,
@@ -28,17 +15,6 @@ export const createSoundbar = (user, newSoundbar) => {
     })
 }
 
-
-// Create soundbar
-
-// POST	/soundbars/:tvId	
-// export const createSoundbar = (tv, newSoundbar) => {
-//     return axios({
-//         url: `${apiUrl}/soundbars/${tv._id}`,
-//         method: 'POST',
-//         data: { soundbar: newSoundbar }
-//     })
-// }
 
 // READ -> Get all soundbars
 export const getSoundbars = () => {

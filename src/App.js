@@ -16,11 +16,13 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import TVShow from './components/tvs/TvShow'
 import TVCreate from './components/tvs/TvCreate'
+import TVIndex from './components/tvs/TvsIndex'
 import Cart from './components/cart/Cart'
 import SoundbarCreate from './components/soundbar/SoundbarCreate';
 import SoundbarShow from './components/soundbar/SoundbarShow/SoundbarShow';
 import SoundbarIndex from './components/soundbar/SoundbarIndex';
 import Search from './components/shared/Search';
+import ProductShow from './components/products/ProductShow';
 
 
 const App = () => {
@@ -143,6 +145,25 @@ const App = () => {
 						<Search user={user} msgAlert={msgAlert}/>
 					}
 				/>
+				<Route 
+					path='/products'
+					element={
+						<ProductShow user={user} msgAlert={msgAlert}/>
+					}
+				/>
+				<Route 
+					path='/products/:id'
+					element={
+						<ProductShow user={user} msgAlert={msgAlert}/>
+					}
+				/>
+				<Route
+				path='tvs/TvsIndex'
+				element={
+					<TVIndex user={user} msgAlert={msgAlert}/>
+				}
+				/>
+
              
 			</Routes>
 

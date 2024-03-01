@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import { getAllTVs } from "../../api/tv"
+import TVDeals from '../products/TVDeals';
 
 import LoadingScreen from '../shared/LoadingScreen'
 import { Card, Button } from 'react-bootstrap'
@@ -13,8 +14,6 @@ const cardContainerLayout = {
     flexFlow: 'row wrap',
     justifyContent: 'center'
 }
-
-
 
 
 
@@ -87,7 +86,9 @@ const TVsIndex = (props) => {
       ))
 
     return (
+
         <div className="container-md" style={ cardContainerLayout }>
+          <TVDeals msgAlert={msgAlert} />
             { tvCards }
         </div>
     )

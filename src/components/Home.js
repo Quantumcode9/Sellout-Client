@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react'
 import React from "react";
 import { getLaptops } from '../api/product'
 import { Carousel, Card, Button } from 'react-bootstrap'
+import Laptops from './products/Laptops'
+
+
+
 
 
 
@@ -46,7 +50,9 @@ const Home = (props) => {
 
 </div>
 
-<TVsIndex msgAlert={msgAlert} />
+
+<Laptops msgAlert={msgAlert} />
+
 	
 
 

@@ -65,7 +65,7 @@ const authenticatedOptions = (
 const alwaysOptions = (
 	<>
 		<Nav.Item className=''>
-			<Link to='/' className='link'>
+			<Link to='tvs/TvsIndex' className='link'>
 				TVs
 			</Link>
 		</Nav.Item>
