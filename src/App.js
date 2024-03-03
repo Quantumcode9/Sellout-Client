@@ -23,6 +23,9 @@ import SoundbarShow from './components/soundbar/SoundbarShow/SoundbarShow';
 import SoundbarIndex from './components/soundbar/SoundbarIndex';
 import Search from './components/shared/Search';
 import ProductShow from './components/products/ProductShow';
+import StreamingIndex from './components/stream/StreamingIndex';
+import StreamDeviceCreate from './components/stream/StreamDeviceCreate';
+import DeviceShow from './components/stream/DeviceShow';
 
 
 const App = () => {
@@ -105,6 +108,14 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				
+				<Route
+					path='/streaming'
+					element={
+						<StreamingIndex user={user} msgAlert={msgAlert}/>
+					}
+				/>
+
 				<Route 
                 path='/soundbars'
                 element={
@@ -161,6 +172,21 @@ const App = () => {
 				path='tvs/TvsIndex'
 				element={
 					<TVIndex user={user} msgAlert={msgAlert}/>
+				}
+				/>
+
+				<Route
+				path='/stream/create'
+				element={
+					<RequireAuth user={user}>
+						<StreamDeviceCreate msgAlert={msgAlert} user={user}/>
+					</RequireAuth>
+				}
+				/>
+				<Route
+				path='/stream/:id'
+				element={
+					<DeviceShow user={user} msgAlert={msgAlert}/>
 				}
 				/>
 

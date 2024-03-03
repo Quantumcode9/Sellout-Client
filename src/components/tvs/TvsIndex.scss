@@ -1,0 +1,58 @@
+.card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .tv-card {
+    width: 33%;
+    margin: 1rem;
+    background-color: white;
+    color: black;
+    font-family: 'Lucida Sans ,Lucida Sans Regular';
+    
+  
+    .card-header,
+    .card-footer {
+      color: white;
+      background-color: black;
+      font-family: 'Lucida Sans ,Lucida Sans Regular';
+    }
+  
+    img {
+      width: 100%;
+      margin-top: 6px;
+    }
+  
+    .card-text {
+      font-size: 1.25rem; 
+    }
+  }
+
+  .tv-card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+  }
+
+    .tv-card .card-header {
+        font-size: 1.5rem;
+    }
+
+    .tv-card .card-footer {
+        font-size: 1.5rem;
+    }
+
+    .tv-card .card-text {
+        font-size: 1.5rem;
+    }
+
+    .tv-card img {
+        width: 100%;
+        margin-top: 6px;
+        
+    }
+ 
+    @media (max-width: 768px) {
+        .tv-card {
+            width: 92%;
+        }
+    }
+

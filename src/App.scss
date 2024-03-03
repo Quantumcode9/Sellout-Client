@@ -72,3 +72,9 @@
 .checkout-button:hover {
   background-color: #cefcfa; 
 }
+
+.device-image {
+  height: 250px;
+  width: 300px;
+  object-fit: contain;
+}

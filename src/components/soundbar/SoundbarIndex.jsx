@@ -21,7 +21,7 @@ const SoundbarIndex = () => {
       {soundbars.map(soundbar => (
         <Link to={`/soundbars/${soundbar._id}`} className="soundbar-link">
           <Card key={soundbar._id} className="soundbar-index-card" style={{ width: '100%' }}>
-            <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+          <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {soundbar.brand} {soundbar.modelNumber}
             </Card.Header>
             <Card.Img variant="top" src={soundbar.image} className="card-img" />

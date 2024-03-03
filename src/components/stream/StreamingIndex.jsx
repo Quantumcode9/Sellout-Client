@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Button, Container } from "react-bootstrap";
-import { getLaptopsDeals } from "../../api/product";
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import "slick-carousel/slick/slick.css"; 
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import {getStreamingDevices} from '../../api/product';
+import { Card, Button, Container, Carousel, Form } from 'react-bootstrap';
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { addToCart } from '../../api/cart';
 import messages from '../shared/AutoDismissAlert/messages';
 import { createProduct } from '../../api/product';
+import { useNavigate } from 'react-router-dom';
+import DeviceIndex from './DeviceIndex';
 
 
-const Laptops = (props) => {
+const StreamingIndex = (props) => {
 
-    const [products, setProducts] = useState([]);
+ const [products, setProducts] = useState([]);
     const { laptops, msgAlert,  } = props;
     const { user } = props;
 
 
     useEffect(() => {
-        getLaptopsDeals()
+      getStreamingDevices()
             .then(response => setProducts(response.data.products))
             .catch(error => console.error(error));
     }
@@ -91,7 +92,7 @@ const Laptops = (props) => {
     
     return (
         <Container>
-        <h1>Laptop Deals</h1>
+        <h1>Streaming Deals</h1>
         <Slider {...settings}>
   {products.map(product => (
    <Card key={product.id} style={{ width: '18rem', height: '16rem', margin: '3rem', overflow: 'hidden' }}>
@@ -115,9 +116,23 @@ const Laptops = (props) => {
     </Card>
   ))}
 </Slider>
+<hr/>
+<h1>Streaming Devices</h1>
+<DeviceIndex msgAlert={msgAlert} />
+<hr/>
+<h1>Find A Service</h1>
+<div style={{ backgroundColor: 'black' }}>
+<iframe src="https://thestreamable.com/matchmaker/embed" title="TV Streaming Matchmaker" width="100%" height="640" frameborder="0"></iframe>
+</div>
+
+
+
+
+
+
         </Container>
     );
     }
 
 
-export default Laptops;
+export default StreamingIndex;

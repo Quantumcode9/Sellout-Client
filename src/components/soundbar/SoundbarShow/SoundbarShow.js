@@ -59,9 +59,11 @@ const SoundbarShow = (props) => {
     }
 
 
+
+
   return (
     <>
-    <Container className='hero-soundbar' style={{ backgroundColor: '`rgba(0,0,0,0.95)`' }} >
+    <Container className='hero-3' style={{ backgroundColor: '`rgba(0,0,0,0.95)`' }} >
       <Card className="soundbar2-card">
         <Card.Header style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
           {soundbar.brand} {soundbar.modelNumber}
@@ -74,6 +76,7 @@ const SoundbarShow = (props) => {
         </Card.Footer>
       </Card>
     </Container>
+    <br />
       <Container>
       <Row>
         <Col md={6}>

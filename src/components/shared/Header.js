@@ -46,6 +46,11 @@ const authenticatedOptions = (
 			    Soundbars
 		</Link>
 		</Nav.Item>
+		<Nav.Item className='nav-item'>
+		<Link to='/streaming' className='link'>
+		Streaming
+		</Link>
+		</Nav.Item>
 	
 
 		<Nav.Item className='nav-item'>
@@ -70,6 +75,7 @@ const alwaysOptions = (
 			</Link>
 		</Nav.Item>
 	</>
+
 )
 
 return (
@@ -89,9 +95,9 @@ return (
   {alwaysOptions}
   {user ? authenticatedOptions : unauthenticatedOptions}
 
-{/* <Nav.Item className='m-2'>
+ {/* <Nav.Item className='m-2'>
 	<button onClick={toggleAdminOptions}>Admin</button>
-</Nav.Item> */}
+</Nav.Item>  */}
 <Nav.Item className=''>
 	<button className='link' onClick={toggleUserOptions}>User</button>
 </Nav.Item>
@@ -135,7 +141,17 @@ return (
 		  Add Soundbar
 		</Link>
 	  </Nav.Item>
+    
+	<Nav.Item className=''>
+		<Link to='/stream/create' className='link'>
+			Create Streaming Device
+		</Link>
+	</Nav.Item>
+
 	</Navbar>
+
+
+
   )}
 
 </Navbar>

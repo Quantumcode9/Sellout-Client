@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/product';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col} from 'react-bootstrap';
+import ProductForm from '../shared/ProductForm';
 import { Button } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import './ProductShow.scss';
