@@ -24,6 +24,32 @@ export const addToCart = (tvId, user) => {
   })
 }
 
+export const addProductToCart = (productId, user) => {
+  return axios({
+    url: apiUrl + '/add-product-to-cart',
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+    data: {
+      productId: productId,
+    },  
+  })}
+
+export const DeleteProductFromCart =  (productId, user) => {
+  return axios({
+    url: apiUrl + '/delete-product-from-cart',
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+    data: {
+      productId: productId, 
+    },
+  })
+}
+
+
 export const handleDeleteFromCart = (tvId, user) => {
   return axios({
     url: apiUrl + '/delete-from-cart',
@@ -37,19 +63,23 @@ export const handleDeleteFromCart = (tvId, user) => {
   })
 }
 
+
+
+
+
 //add product to cart
 
-export const addProductToCart = (productId, user) => {
-  return axios({
-    url: apiUrl + '/add-product-to-cart',
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${user.token}`,
-    },
-    data: {
-      productId: productId,
-    },  
-  })}
+// export const addProductToCart = (productId, user) => {
+//   return axios({
+//     url: apiUrl + '/add-product-to-cart',
+//     method: 'POST',
+//     headers: {
+//       Authorization: `Bearer ${user.token}`,
+//     },
+//     data: {
+//       productId: productId,
+//     },  
+//   })}
 
 //delete product from cart
 

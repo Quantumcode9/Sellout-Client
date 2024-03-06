@@ -114,7 +114,6 @@ const TVsIndex = (props) => {
           <Container>
             <h1>TVs</h1>
             {/* Filter  */}
-           
               <FilterForm handleInputChange={handleInputChange} brands={brands} />
               <hr />
       
@@ -130,9 +129,8 @@ const TVsIndex = (props) => {
               .filter(tv => filters.vrr !== null ? tv.vrr === filters.vrr : true)
               // .filter(tv => filters.price ? tv.price <= Number(filters.price) : true)
               .map(tv => (
- 
-                    <Card key={tv.id} className="tvCards">
-                         <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap' }}>
+        <Card key={tv.id} className="tvCards">
+        <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap' }}>
           {/* {tv.brand}  */}
           {tv.modelNumber}
         </Card.Header>

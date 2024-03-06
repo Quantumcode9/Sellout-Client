@@ -1,51 +1,152 @@
+
+
+$primary-color: #000000; 
+$dark-bg: #343a40; 
+$light-text: #f8f9fa; 
+$danger-color: #dc3545;
+$link-color: $primary-color; 
+$base-font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
+
+.cart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  background-color: $dark-bg;
+  color: $light-text;
+  padding: 20px;
+
+
+  h2 {
+    grid-column: 1 / -1; 
+    color: $light-text;
+  }
+
+  hr {
+    border-color: $light-text;
+  }
+}
+
+
 .cart-card {
-    width: 18rem;
-    margin: 10px;
+  background-color: darken($dark-bg, 5%);
+  border: 4px solid black ;
+  border-radius: 5px;
+
+  color: $light-text;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 50%;
+
+  @media screen and (max-width: 768px)
+  {
+    width: 100%;
+    max-width: 100%;
   }
 
 
-  .cart-container {
-    display: flex;
-    justify-content: space-between;
-  
-    @media (max-width: 576px) { 
-      flex-direction: column;
-    }
+
+  @media screen and (max-width: 576px)
+  {
+    
+    width: 100%;
+
   }
-  
+
+
   .cart-card-body {
-    background-color: black;
-    color: white;
-    font-family: 'Lucida Sans ,Lucida Sans Regular';
-    height: 100%;
+    background-color: $dark-bg;
+    font-family: $base-font-family;
   }
-  
+
   .cart-card-buttons {
     display: flex;
     justify-content: space-between;
-    background-color: black;
-  
-    Button {
-      width: 50%;
-      box-sizing: border-box;
-      &:first-child {
-        margin-right: 1px;
+    padding: 10px;
+
+    a, button {
+      font-family: $base-font-family;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .btn-dark {
+      background-color: $primary-color;
+      border-color: $primary-color;
+
+      &:hover {
+        background-color: white;
+        color: $primary-color;
       }
-      &:last-child {
-        margin-left: 1px;
+    }
+
+    button {
+      background-color: $primary-color;
+      border-color: $danger-color;
+      color: $light-text;
+
+      &:hover {
+        background-color: darken($danger-color, 10%);
       }
     }
   }
+}
 
-  .cart-card-buttons button {
-    background-color: white;
-    color: black;
+.cart-title {
+  color: $light-text;
+  font-family: $base-font-family;
+  font-size: 1.1rem;
+}
+
+.font-size {
+  font-size: 1.25rem;
+}
+
+@media screen and (max-width: 558px)
+{
+  .cart-title {
+    font-size: 1rem;
   }
 
-    .cart-card-buttons button:hover {
-        background-color: black;
-        color: white;
-    }   
+  .font-size {
+    font-size: 1rem;
+  }
+
+
+  
+}
+
+
+ .cart-container {
+display: flex;
+justify-content: space-between;
+  
+@media (max-width: 576px) { 
+flex-direction: column;
+}
+}
+  
+//   .cart-card-body {
+//     background-color: black;
+//     color: white;
+//     font-family: 'Lucida Sans ,Lucida Sans Regular';
+//     height: 100%;
+//   }
+  
+//   .cart-card-buttons {
+//     display: flex;
+//     justify-content: space-between;
+//     background-color: black;
+  
+
+  
+
+  .cart-card img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+  }
+
 
 
     .checkout {
