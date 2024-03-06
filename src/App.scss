@@ -4,6 +4,8 @@
 @import './components/tvs/TvShow.scss';
 
 
+
+
 .App {
   text-align: center;
 }
@@ -63,6 +65,7 @@
 }
 
 
+
 .checkout-button {
   background-color: #40E0D0;
   color: white;
@@ -78,3 +81,26 @@
   width: 300px;
   object-fit: contain;
 }
+
+
+.product-card {
+  width: 18rem;
+  height: 18rem;
+  margin: 2rem;
+  overflow: hidden;
+}
+
+
+
+.product-card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  transform: scale(1.05);
+  transition: all 0.4s ease;
+}
+
+.product-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #40E0D0;
+}
+

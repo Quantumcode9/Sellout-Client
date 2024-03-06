@@ -69,7 +69,7 @@ const TVCreate = (props) => {
             message: res.data.message, 
             variant: 'success',
         });
-        navigate(`/tvs/${res.data.tv._id}`);
+        // navigate(`/tvs/${res.data.tv._id}`);
     })
         .catch(err => {
             msgAlert({

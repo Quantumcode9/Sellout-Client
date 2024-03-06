@@ -60,7 +60,7 @@ const DeviceIndex = (props) => {
               slidesToShow: 2,
               slidesToScroll: 2,
               infinite: true,
-              dots: true
+              dots: false
             }
           },
           {
@@ -69,6 +69,7 @@ const DeviceIndex = (props) => {
               slidesToShow: 1,
               slidesToScroll: 1,
               initialSlide: 1
+           
             }
           }
         ]
@@ -83,7 +84,7 @@ const DeviceIndex = (props) => {
         { devices.map(device => (
             //  <Link to={`/stream/${device._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
          <Card key={device.id} style={{ width: '22rem', height: '30rem', margin: '2rem', overflow: 'hidden' }}>
-        <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  }}>
+        <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap'  }}>
           {device.name}
         </Card.Header>
         <Card.Img variant="top" src={device.image} className="card-img" />
@@ -94,7 +95,7 @@ const DeviceIndex = (props) => {
         {device.salePrice < device.regularPrice && <Card.Text style={{ color: 'red', overflow: 'hidden',marginLeft: '10px' }}> ${device.salePrice}</Card.Text>}
       </Card.Body>
               <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
-              <Link to={`/devices/${device._id}`} className="btn btn-primary" style={{ textDecoration: 'none', color: 'inherit' }}>View</Link>
+              <Link to={`/stream/${device._id}`} className="btn btn-primary" style={{ textDecoration: 'none', color: 'inherit' }}>View</Link>
             </Card.Footer>
           </Card>
 

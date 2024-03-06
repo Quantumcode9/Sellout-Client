@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/product';
 import { useNavigate } from 'react-router-dom';
-import { Card, Row, Col} from 'react-bootstrap';
-import ProductForm from '../shared/ProductForm';
-import { Button } from 'react-bootstrap';
-import Accordion from 'react-bootstrap/Accordion';
+import { Card, Row, Col, Button} from 'react-bootstrap';
+import { addProductToCart } from '../../api/cart';
+import messages from '../shared/AutoDismissAlert/messages'
 import './ProductShow.scss';
 
-function ProductShow() {
+  function ProductShow(props) {
   const { id } = useParams();
+  const { user, msgAlert } = props;
   const [product, setProduct] = useState(null);
   const [updated, setUpdated] = useState(false)
+  const [cartItems, setCartItems] = useState([]);
+
   const navigate = useNavigate();
+
 
 
   useEffect(() => {
@@ -28,6 +31,37 @@ function ProductShow() {
 
   if (!product) return <div>Loading...</div>;
 
+  const handleAddToCart = (user) => {
+    if (!user) {
+      msgAlert({
+        heading: 'Error',
+        message: 'User is not authenticated',
+        variant: 'danger'
+      });
+      return;
+    }
+  
+    addProductToCart(product._id, user)
+      .then(res => {
+        msgAlert({
+          heading: 'Added to Cart!',
+          message: 'Added to cart successfully!',
+          variant: 'success'
+        });
+        setCartItems(prevCartItems => [...prevCartItems, res.data.product]);
+        navigate('/cart');
+      })
+      .catch(err => {
+        console.error(err);
+        msgAlert({
+          heading: 'Slow down!',
+          message: messages.itemAlreadyAdded,
+          variant: 'danger'
+        });
+      });
+  };
+
+
   return (
     <div>
           <Row>
@@ -38,10 +72,14 @@ function ProductShow() {
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `white`, color: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
 
-          <img src={product.image} alt={product.name} className='tv-image'/>
+          <img src={product.image} alt={product.name} className='product-image'/>
           </Card.Body>
+
+          <Card.Footer style={{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+          <Button onClick={() => handleAddToCart(user)}>Add to Cart</Button>
      
-        <button onClick={() => navigate(`/products/${product._id}/edit`)}>Edit</button>
+        {/* <button onClick={() => navigate(`/products/${product._id}/edit`)}>Edit</button> */}
+        </Card.Footer>
       </Card>
       </Col>
       

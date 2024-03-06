@@ -94,7 +94,7 @@ const TVDeals = (props) => {
         <h1>TV Deals</h1>
         <Slider {...settings}>
   {products.map(product => (
-  <Card key={product.id} style={{ width: '18rem', height: '18rem', margin: '2rem', overflow: 'hidden' }}>
+  <Card key={product.id} className="">
   <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
     {product.name}
   </Card.Header>
@@ -107,10 +107,6 @@ const TVDeals = (props) => {
 </Card.Body>
         <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
         <Button variant="primary" onClick={() => handleSubmit(product)}>View</Button>
-
-        <Button variant="dark" onClick={() => handleAddToCart(product.id)}>
-          Add to Cart 
-        </Button>
       </Card.Footer>
     </Card>
   ))}

@@ -41,7 +41,7 @@ const CartPage = ({ user }) => {
   <Card.Body className="cart-card-body" style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
     <Card.Title>{item.name}</Card.Title>
     <Card.Text>
-      Price: {item.price}
+      Price: {item.price} {item.regularPrice}
     </Card.Text>
   </Card.Body> 
   <div className="cart-card-buttons">

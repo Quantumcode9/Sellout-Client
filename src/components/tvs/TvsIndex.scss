@@ -2,7 +2,38 @@
     text-decoration: none;
     color: inherit;
   }
+
+
+
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
   
+
+  }
+
+ 
+  
+
+  .size-label {
+    position: absolute;
+    top: 20%; 
+    right: 2%; 
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px; 
+    border-radius: 5px; 
+  }
+
   .tv-card {
     width: 33%;
     margin: 1rem;
@@ -17,10 +48,10 @@
       background-color: black;
       font-family: 'Lucida Sans ,Lucida Sans Regular';
     }
-  
-    img {
-      width: 100%;
-      margin-top: 6px;
+ 
+    .card-body {
+      padding: 0;
+      margin: 0;
     }
   
     .card-text {
@@ -28,27 +59,6 @@
     }
   }
 
-  .tv-card:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
-  }
-
-    .tv-card .card-header {
-        font-size: 1.5rem;
-    }
-
-    .tv-card .card-footer {
-        font-size: 1.5rem;
-    }
-
-    .tv-card .card-text {
-        font-size: 1.5rem;
-    }
-
-    .tv-card img {
-        width: 100%;
-        margin-top: 6px;
-        
-    }
  
     @media (max-width: 768px) {
         .tv-card {
@@ -56,3 +66,28 @@
         }
     }
 
+.ca {
+  margin-bottom: 70px;
+
+}
+  
+
+.slick-dots {
+  bottom: -20px;
+}
+
+
+
+
+
+
+@media (max-width: 767px) {
+  .slick-dots {
+    bottom: -20px;
+  }
+  .ca {
+    margin-bottom: 30px;
+  }
+
+
+}

@@ -7,6 +7,7 @@ import LoadingScreen from '../shared/LoadingScreen'
 import { Container, Card, Button, Row, Col  } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
+import './DeviceShow.scss'
 // import EditDeviceModal from './EditDeviceModal'
 
 
@@ -89,9 +90,7 @@ const DeviceShow = (props) => {
                     { device.name}
                     </Card.Header>
                     <Card.Body>
-                        <Card.Text> 
                             <img src={device.image} alt={device.modelNumber} className='device-image'/>
-                        </Card.Text>
                     </Card.Body>
                     <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                 
@@ -218,6 +217,7 @@ const DeviceShow = (props) => {
               </Col>
                 </Row>
         </Container>
+
         </>
 
     )

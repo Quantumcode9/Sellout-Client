@@ -159,18 +159,19 @@ const TVShow = (props) => {
                 </Card>
                     </Container>
                     
-            <Container className=''>
-            <Row>
-                <Col md={6}>
-                <Card>
-                    <Card.Header style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                    {tv.brand} { tv.modelNumber}
-                    </Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            <img src={tv.image} alt={tv.modelNumber} className='tv-image'/>
-                        </Card.Text>
-                    </Card.Body>
+                    <Container>
+                    <Row>
+                    <Col md={6}>
+                        <Card>
+                         <Card.Header style={{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
+                        {tv.brand} {tv.modelNumber}
+                        </Card.Header>
+                        <Card.Body className="image-contain">
+                            
+                        <img src={tv.image} alt={tv.modelNumber} className='tv-image-profile'/>
+                        <img src={tv.image3 || tv.image} alt={`${tv.modelNumber}-hover`} className='tv-image-hover'/>
+                    
+        </Card.Body>
                     <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                 
                         {

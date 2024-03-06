@@ -18,6 +18,18 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .soundbar-card2 {
+    width: 100%;
+    margin: 2.5%;
+  }
+  .hero-3 {
+    display: none;
+  }
+  
+  
+}
+
 
 .sound-card {
     position: relative;

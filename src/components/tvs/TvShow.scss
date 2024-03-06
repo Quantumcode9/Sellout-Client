@@ -103,4 +103,44 @@
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
 }
+.image-contain {
+    position: relative; 
+    width: auto;
+    height: 250px;
+    overflow: hidden;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+
+  .tv-image-profile,
+  .tv-image-hover {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    transition: opacity 0.5s;
+    object-fit: contain;
+    object-position: center;
+    
+  }
+  .tv-image-hover {
+    opacity: 0;
+  }
+  
+  .image-contain:hover .tv-image-hover {
+    opacity: 1;
+  }
+  
+    .image-contain:hover .tv-image-profile {
+        opacity: 0;
+    }
+
+
+
+
+
+  
+    
 
