@@ -258,7 +258,34 @@ $nav-height: 50px;
   @media (max-width: 768px) { 
     .hamburger {
       display: block; 
+      border:  black;
+      background-color: #0f0f0fb1;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 5px;
+      cursor: pointer;
     }
+    .hamburger:hover {
+      background-color: #e2e2e2;
+      color: rgb(0, 0, 0); 
+      text-transform: lowercase;
+      border: 1px solid black; 
+    }
+    .hamburger:after {
+      content: '☰';
+    }
+    .hamburger.open:after {
+      content: '✖';
+    }
+    .hamburger.open {
+      background-color: #e2e2e2;
+      color: rgb(0, 0, 0); 
+      text-transform: lowercase;
+      border: 1px solid black; 
+    }
+
+  
+
     .navbar .nav-item {
       display: none;
     }

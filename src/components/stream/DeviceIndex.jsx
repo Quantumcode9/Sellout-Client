@@ -51,7 +51,7 @@ const DeviceIndex = (props) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 3,
         responsive: [
           {
@@ -64,7 +64,16 @@ const DeviceIndex = (props) => {
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 550,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1,
@@ -87,7 +96,7 @@ const DeviceIndex = (props) => {
         <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap'  }}>
           {device.name}
         </Card.Header>
-        <Card.Img variant="top" src={device.image} className="card-img" />
+        <Card.Img variant="top" src={device.image} className="card-img" style={{ maxHeight: '250px', maxWidth: '300px' }} />
         <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', height: '3rem' }}>
         <Card.Text style={{ color: 'black', textDecoration: device.salePrice < device.regularPrice ? 'line-through' : 'none' }}>
           ${device.regularPrice}.99

@@ -5,7 +5,7 @@ const FilterForm = ({ handleInputChange, brands }) => (
             <Row>
             <Col md={3}>
                 <Form.Group controlId="formGridSize">
-                <Form.Label>Size</Form.Label>
+                <Form.Label style={{ textAlign: 'center' }}>Size</Form.Label>
                 <Form.Control as="select" name="size" onChange={handleInputChange}>
                     <option value="">Select size...</option>
                     <option value="40-43">40-43</option>

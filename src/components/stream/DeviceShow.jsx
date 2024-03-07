@@ -80,9 +80,9 @@ const DeviceShow = (props) => {
                     {device.manufacturer} 
                     </Card.Footer>
                 </Card>
-                    </Container>
+        </Container>
                     
-            <Container className=''>
+        <Container className=''>
             <Row>
                 <Col md={6}>
                 <Card>
@@ -175,12 +175,11 @@ const DeviceShow = (props) => {
 </Card.Body>
 </Card>
     </Col>
-        </Row>
+    </Row>
 
-        
-                <Row>
+    <Row>
     <Col md={6}>
-                <Card>
+        <Card>
                 <Card.Header style={{ color: 'black', backgroundColor: `rgba(255,255,255,0.80)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                         Tech Specs
                     </Card.Header>
@@ -192,29 +191,25 @@ const DeviceShow = (props) => {
             Smart OS:<strong> {device.smartOS}</strong><hr/>
             SKU:<strong> {device.sku}</strong><hr/> 
             HDR:<strong> {device.hdr ? 'Yes' : 'No'}</strong><hr/>
-
-           
-
-
         </Card.Text>
     </Card.Body>
 </Card>
-                </Col>
-                <Col md={6}>
+    </Col>
+        <Col md={6}>
                 <Card>
                     <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                         Reviews
                     </Card.Header>
                     <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
                         <Card.Text>
-                            Overall Rating: <span style={{ color: device.overallRating >= 8 ? 'green' : device.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{device.overallRating}/10</strong></span>
+                        Overall Rating: <span style={{ color: device.overallRating >= 8 ? 'green' : device.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{device.overallRating}/10</strong></span>
                         <hr/>
-                            Overview: <br/> 
-                            {device.overview}
+                        Overview: <br/> 
+                        {device.overview}
                         </Card.Text>
                     </Card.Body>
                 </Card>
-              </Col>
+            </Col>
                 </Row>
         </Container>
 
@@ -223,14 +218,6 @@ const DeviceShow = (props) => {
     )
 }
 
-        
-      
-
-       
-
-
-
-  
 
 
 export default DeviceShow

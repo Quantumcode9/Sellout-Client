@@ -131,7 +131,7 @@ import './ProductShow.scss';
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
         {product.features.map(feature => (
-  <div key={feature._id}>
+        <div key={feature._id}>
     {feature.feature.split('\n').map((paragraph, index) => (
       <Card.Text key={index}>
         {index === 0 
@@ -141,7 +141,7 @@ import './ProductShow.scss';
       </Card.Text>
     ))}
     <hr />  
-  </div>
+        </div>
 ))}
         </Card.Body>
       </Card>

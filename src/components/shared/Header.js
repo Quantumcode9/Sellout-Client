@@ -14,15 +14,23 @@ const Header = ({ user }) => {
 	const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
         setShowSideOptions(false);
-        setShowAdminOptions(false);
+        setShowAdminOptions(false);	
       };
 
 	function toggleUserOptions() {
 	setShowUserOptions(prevState => !prevState);
+	// Closes the secondary sidebar after 10 seconds
+	if (!showUserOptions) {
+		setTimeout(() => {
+		  setShowUserOptions(false);
+		}, 10000);
+	  }
 	}
+	
     function toggleSideOptions() {
         setShowSideOptions(prevState => !prevState);
-    }
+
+}
 
 	function toggleAdminOptions() {
 	setShowAdminOptions(prevState => !prevState);
@@ -100,17 +108,17 @@ return (
 		
 	<Navbar bg="" variant="l" className="secondary-navbar">
 	<Nav.Item className=''>
-		<Link to='change-password' className='link'>
+		<Link to='change-password' className='link' onClick={toggleUserOptions}>
 		Change Password
 		</Link>
 	</Nav.Item>
 	<Nav.Item className=''>
-		<Link to='sign-out' className='link'>
+		<Link to='sign-out' className='link' onClick={toggleUserOptions}>
 		Sign Out
 		</Link>
 	</Nav.Item>
 	<Nav.Item className=''>
-		<Link to='/cart' className='link'>
+		<Link to='/cart' className='link' onClick={toggleUserOptions}>
 		Your Cart
 		</Link>
 	</Nav.Item>
@@ -136,7 +144,7 @@ return (
 	</Navbar>
 )}
 <header>
-  <button className="hamburger" onClick={toggleSidebar}>☰</button>
+  <button className="hamburger" onClick={toggleSidebar}></button>
   <nav className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
     {alwaysOptions}
     {user ? authenticatedOptions : unauthenticatedOptions}

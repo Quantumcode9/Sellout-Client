@@ -8,9 +8,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-import { addToCart } from '../../api/cart';
-import messages from '../shared/AutoDismissAlert/messages';
-
 
 
 const Search = () => {
@@ -30,47 +27,36 @@ const Search = () => {
         });
     };
 
-    const navigate = useNavigate();
+const navigate = useNavigate();
 
 
-    const handleInputChange = (event) => {
-      setProductData({
+const handleInputChange = (event) => {
+  setProductData({
         ...productData,
         [event.target.name]: event.target.value
       });
-    };
+};
   
-        const handleSubmit = (productData) => {
-      createProduct(productData)
-        .then(res => {
-          const id = res.data.product._id; 
-          if(id) {
-            navigate(`/products/${id}`);
-          } else {
+const handleSubmit = (productData) => {
+  createProduct(productData)
+    .then(res => {
+const id = res.data.product._id; 
+      if(id) {
+          navigate(`/products/${id}`);
+      } else {
             console.error("Product ID is undefined.", res.data);
-          }
-        })
-        .catch(err => {
-          // handle error
-        });
-    };
-  
-
-    const handleAddToCart = (productId) => {
-      addToCart(productId)
-        .then(() => {
-          console.log('Product added to cart');
-        })
-        .catch(() => {
-          console.error('Failed to add product to cart');
-        });
-    }
+      }
+    })
+      .catch(err => {
+            console.error('Error creating product:', err);
+      });
+};
 
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 3,
       responsive: [
         {
@@ -97,9 +83,9 @@ const Search = () => {
 
 
 
-    return (
-        <div>
-          <div>
+return (
+<div>
+  <div>
   <Form onSubmit={handleSearch}>
     <Form.Group controlId="searchKeyword" style={{ width: '50%', margin: 'auto' }}>
       <Form.Control
@@ -113,10 +99,10 @@ const Search = () => {
       Search
     </Button>
   </Form>
-</div>
+  </div>
 
 
-<div>
+  <div>
 
 <Slider {...settings}>
   {products.map(product => (
@@ -132,25 +118,13 @@ const Search = () => {
   {product.salePrice < product.regularPrice && <Card.Text style={{ color: 'red', overflow: 'hidden',marginLeft: '10px' }}> ${product.salePrice}</Card.Text>}
 </Card.Body>
         <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
-        <Button variant="primary" onClick={() => handleSubmit(product)}>Create/View</Button>
-
-        <Button variant="dark" onClick={() => handleAddToCart(product.id)}>
-          Add to Cart 
-        </Button>
+        <Button variant="primary" onClick={() => handleSubmit(product)}>View</Button>
       </Card.Footer>
     </Card>
   ))}
 </Slider>
-
-
-
+  </div>
 </div>
-
-          
-
-
-        
-        </div>
     );
 };
 

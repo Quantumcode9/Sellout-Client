@@ -21,8 +21,6 @@
 
   }
 
- 
-  
 
   .size-label {
     position: absolute;
@@ -90,4 +88,13 @@
   }
 
 
+}
+
+
+@media (max-width: 576px) {
+  .dropdown-menu {
+    /* Add your CSS for smaller screens here */
+    width: 100%;
+    text-align: center;
+  }
 }

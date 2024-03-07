@@ -35,23 +35,23 @@ const SoundbarShow = (props) => {
     };
   }, [id]);
 
-  const handleAddToCart = (soundbarId) => {
-    addToCart(user, soundbarId)
-      .then(() => {
-        msgAlert({
-          heading: 'Soundbar Added to Cart',
-          message: messages.addToCartSuccess,
-          variant: 'success'
-        })
-      })
-      .catch(() => {
-        msgAlert({
-          heading: 'Soundbar Add to Cart Failed',
-          message: messages.addToCartFailure,
-          variant: 'danger'
-        })
-      })
-  }
+  // const handleAddToCart = (soundbarId) => {
+  //   addToCart(user, soundbarId)
+  //     .then(() => {
+  //       msgAlert({
+  //         heading: 'Soundbar Added to Cart',
+  //         message: messages.addToCartSuccess,
+  //         variant: 'success'
+  //       })
+  //     })
+  //     .catch(() => {
+  //       msgAlert({
+  //         heading: 'Soundbar Add to Cart Failed',
+  //         message: messages.addToCartFailure,
+  //         variant: 'danger'
+  //       })
+  //     })
+  // }
 
   
     if (!soundbar) {
@@ -63,20 +63,22 @@ const SoundbarShow = (props) => {
 
   return (
     <>
-    <Container className='hero-3' style={{ backgroundColor: '`rgba(0,0,0,0.95)`' }} >
-      <Card className="soundbar2-card">
-        <Card.Header style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-          {soundbar.brand} {soundbar.modelNumber}
-        </Card.Header>
-        <Card.Body style={{ overflow: 'hidden' }}>
-          <img src={soundbar.image2 ? soundbar.image2 : soundbar.image} alt={soundbar.modelNumber} className='soundbar-image'/>
-        </Card.Body>
-        <Card.Footer style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-          {soundbar.brand} {soundbar.modelNumber}
-        </Card.Footer>
-      </Card>
-    </Container>
-    <br />
+   {soundbar.image2 && (
+  <Container className='hero-soundbar' style={{ backgroundColor: '`rgba(0,0,0,0.95)`' }} >
+    <Card className="soundbar2-card">
+      <Card.Header style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        {soundbar.brand} {soundbar.modelNumber}
+      </Card.Header>
+      <Card.Body style={{ overflow: 'hidden' }}>
+        <img src={soundbar.image2} alt={soundbar.modelNumber} className='soundbar-image'/>
+      </Card.Body>
+      <Card.Footer style={{ color: 'white', backgroundColor: `rgba(0,0,0,0.95)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        {soundbar.brand} {soundbar.modelNumber}
+      </Card.Footer>
+    </Card>
+  </Container>
+)}
+<br />
       <Container>
       <Row>
         <Col md={6}>
@@ -84,34 +86,13 @@ const SoundbarShow = (props) => {
         <Card.Header style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
             {soundbar.brand} { soundbar.modelNumber}
             </Card.Header>
-            <Card.Body>
-                <Card.Text>
-              <img src={soundbar.image} alt={soundbar.modelNumber} className='soundbar-image'/>
-                </Card.Text>
+            <Card.Body style={{ overflow: 'hidden' }}>
+            <img src={soundbar.image} alt={soundbar.modelNumber} className='soundbar-image2'/>
+
             </Card.Body>
             <Card.Footer style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
         <Container className=''>
-        {/* <Button variant='primary' onClick={() => setEditModalShow(true)}>Edit</Button>
-        <Button variant='danger' onClick={() => removeSoundbar(user, soundbar._id)
-          .then(() => {
-            msgAlert({
-              heading: 'Soundbar Deleted',
-              message: messages.removeSoundbarSuccess,
-              variant: 'success'
-            })
-            triggerRefresh()
-          })
-          .catch(() => {
-            msgAlert({
-              heading: 'Soundbar Deletion Failed',
-              message: messages.removeSoundbarFailure,
-              variant: 'danger'
-            })
-          })}>Delete</Button>
-        <Button variant='success' onClick={() => handleAddToCart(soundbar.id)
-        }>Add to Cart</Button> */}
-        
-        
+
       </Container>
       <EditSoundbarModal
         show={editModalShow}
@@ -149,13 +130,5 @@ const SoundbarShow = (props) => {
 
     )
 }
-
-
-
-
-
-
-
-
 
 export default SoundbarShow

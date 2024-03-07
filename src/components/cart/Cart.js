@@ -43,6 +43,7 @@ const CartPage = ({ user }) => {
         });
     }
 
+// Calculates total price of items in cart
     const totalPrice = [...cart, ...cart2].reduce((total, item) => {
       let price;
       if (item.price) {
@@ -52,6 +53,8 @@ const CartPage = ({ user }) => {
       }
       return total + price;
     }, 0);
+    // round to 2 decimal places
+    const roundedTotalPrice = +totalPrice.toFixed(2);
 
 
   
@@ -67,15 +70,17 @@ const CartPage = ({ user }) => {
         {cart.map(item => (
 
   <Card key={item._id} className="cart-card">
+  <div className="cart-img-container">
   <Card.Img variant="top" src={item.image} />
-  <Card.Body className="cart-card-body" style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+  </div>
+  <Card.Body className="cart-card-body" >
   <Card.Text className='cart-title'>{item.name}</Card.Text>
     <Card.Text>
-      Price: {item.price}.99
+    Price: {`${item.price}.99`}
     </Card.Text>
   </Card.Body> 
   <div className="cart-card-buttons">
-  <Button as={Link} to={`/tvs/${item._id}`} variant="dark">Item page</Button>
+  <Button as={Link} to={`/tvs/${item._id}`} variant="dark">Back To Item Page</Button>
     {/* Delete From Cart */}
     <Button variant='' onClick={() => handleDelete(item._id)}>
       Remove From Cart
@@ -87,14 +92,18 @@ const CartPage = ({ user }) => {
 ))}
 {cart2.map(item => (
   <Card key={item._id} className="cart-card">
+  <div className="cart-img-container">
   <Card.Img variant="top" src={item.image} />
-  <Card.Body className="cart-card-body" style= {{ backgroundColor: 'black', color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+  </div>
+  <Card.Body className="cart-card-body">
   <Card.Text className='cart-title'>{item.name}</Card.Text>
-    {item.salePrice < item.regularPrice && <Card.Text style={{ color: 'red', overflow: 'hidden',marginLeft: '10px' }}> ${item.salePrice}</Card.Text>}
+  <Card.Text style={{ color: item.salePrice < item.regularPrice ? 'red' : 'white' }}>
+  ${item.salePrice < item.regularPrice ? item.salePrice : item.regularPrice}
+</Card.Text>
   </Card.Body>
   <div className="cart-card-buttons">
     
-    <Button as={Link} to={`/products/${item._id}`} variant="dark">Item page</Button>
+    <Button as={Link} to={`/products/${item._id}`} variant="dark">Back To Item Page</Button>
     {/* Delete From Cart */}
     <Button variant='' onClick={() => handleDelete2(item._id)}>
       Remove From Cart
@@ -104,13 +113,9 @@ const CartPage = ({ user }) => {
 ))}
 
 
-
-
-
-     
       </div>
       <div className="checkout">
-      <h2>Total Price: ${totalPrice}</h2>
+      <h2>Total Price: ${roundedTotalPrice}</h2>
       <hr/>
       <Button variant="btn btn-lg btn-outline-success">Checkout</Button>
       </div>

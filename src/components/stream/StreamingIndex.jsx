@@ -28,24 +28,6 @@ const StreamingIndex = (props) => {
 
     const navigate = useNavigate();
 
-    const handleAddToCart = (laptopId) => {
-        addToCart(user, laptopId)
-            .then(() => {
-                msgAlert({
-                    heading: 'Laptop Added to Cart',
-                    message: messages.addToCartSuccess,
-                    variant: 'success'
-                })
-            })
-            .catch(() => {
-                msgAlert({
-                    heading: 'Laptop Add to Cart Failed',
-                    message: messages.addToCartFailure,
-                    variant: 'danger'
-                })
-            })
-    }
-
     const handleSubmit = (productData) => {
         createProduct(productData)
           .then(res => {
@@ -65,7 +47,7 @@ const StreamingIndex = (props) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 3,
         responsive: [
           {
@@ -78,7 +60,16 @@ const StreamingIndex = (props) => {
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 550,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1,
@@ -96,10 +87,10 @@ const StreamingIndex = (props) => {
         <Slider {...settings}>
   {products.map(product => (
    <Card key={product.id} style={{ width: '18rem', height: '16rem', margin: '3rem', overflow: 'hidden' }}>
-  <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+  <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', fontSize: '15px', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
     {product.name}
   </Card.Header>
-  <Card.Img variant="top" src={product.image} className="card-img" />
+  <Card.Img variant="top" src={product.image} className="card-img" style={{ maxHeight: '250px', maxWidth: '300px' }} />
   <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', height: '5rem' }}>
   <Card.Text style={{ color: 'black', textDecoration: product.salePrice < product.regularPrice ? 'line-through' : 'none' }}>
     ${product.regularPrice}
@@ -108,10 +99,6 @@ const StreamingIndex = (props) => {
 </Card.Body>
         <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
         <Button variant="primary" onClick={() => handleSubmit(product)}>View</Button>
-
-        <Button variant="dark" onClick={() => handleAddToCart(product.id)}>
-          Add to Cart 
-        </Button>
       </Card.Footer>
     </Card>
   ))}
@@ -120,13 +107,6 @@ const StreamingIndex = (props) => {
 <h1>Streaming Devices</h1>
 <DeviceIndex msgAlert={msgAlert} />
 <hr/>
-<h1>Find A Service</h1>
-<div style={{ backgroundColor: 'black' }}>
-<iframe src="https://thestreamable.com/matchmaker/embed" title="TV Streaming Matchmaker" width="100%" height="640" frameborder="0"></iframe>
-</div>
-
-
-
 
 
 
