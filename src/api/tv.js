@@ -2,7 +2,6 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // READ -> Index
-// axios default functionality is to send a GET request
 export const getAllTVs = () => {
     return axios(`${apiUrl}/tvs`)
 }
@@ -37,7 +36,6 @@ export const updateTV = (user, updatedTV) => {
     })
 }
 
-// DELETE -> Set a tv free
 export const removeTV = (user, id) => {
     return axios({
         url: `${apiUrl}/tvs/${id}`,
@@ -49,7 +47,6 @@ export const removeTV = (user, id) => {
 }
 
 // POST request to add a soundbar to a tv
-
 export const addSoundbar = (tvId, user, newSoundbar) => {
     return axios({
         url: `${apiUrl}/soundbars/${tvId}`,

@@ -34,13 +34,10 @@ const App = () => {
 	const [msgAlerts, setMsgAlerts] = useState([])
 
 	useEffect(() => {
-		// access localStorage
 		const loggedInUser = localStorage.getItem('user')
 
 		if (loggedInUser) {
-			// we need to parse the json string
 			const foundUser = JSON.parse(loggedInUser)
-			// then set that saved user in state
 			setUser(foundUser)
 		}
 	}, [])
@@ -50,9 +47,7 @@ const App = () => {
 
 	const clearUser = () => {
 		console.log('clear user ran')
-		// to clear the user saved in local storage
 		localStorage.removeItem('user')
-		// to clear the user saved in state
 		setUser(null)
 	}
 

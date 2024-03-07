@@ -4,7 +4,7 @@ import TVForm from '../shared/TVForm'
 import messages from '../shared/AutoDismissAlert/messages'
 
 const EditTVModal = (props) => {
-    // pull the important things from props
+
     const { user, show, handleClose, updateTV, msgAlert, triggerRefresh } = props
 
     const [tv, setTV] = useState(props.tv)
@@ -33,11 +33,8 @@ const EditTVModal = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // make the API call
         updateTV(user, tv)
-            // close the modal
             .then(() => handleClose())
-            // message the user
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
@@ -45,7 +42,6 @@ const EditTVModal = (props) => {
                     variant: 'success'
                 })
             })
-            // trigger a refresh
             .then(() => triggerRefresh())
             .catch(() => {
                 msgAlert({

@@ -120,24 +120,6 @@ const TVShow = (props) => {
     const [updatedReview, setUpdatedReview] = useState(null)
 
 
-    
-
-    // let soundbarCards
-    // if (tv) {
-    //     if (tv.soundbars.length > 0) {
-    //         soundbarCards = tv.soundbars.map(soundbar => (
-    //             <SoundbarShow 
-    //                 key={soundbar.id}
-    //                 soundbar={soundbar}
-    //                 tv={tv}
-    //                 user={user}
-    //                 msgAlert={msgAlert}
-    //                 triggerRefresh={() => setUpdated(prev => !prev)}
-    //             />
-    //         ))
-    //     } else {
-    //     }
-    // }
 
     if (!tv) {
         return <LoadingScreen />

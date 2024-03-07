@@ -67,25 +67,3 @@ export const handleDeleteFromCart = (tvId, user) => {
 
 
 
-//add product to cart
-
-// export const addProductToCart = (productId, user) => {
-//   return axios({
-//     url: apiUrl + '/add-product-to-cart',
-//     method: 'POST',
-//     headers: {
-//       Authorization: `Bearer ${user.token}`,
-//     },
-//     data: {
-//       productId: productId,
-//     },  
-//   })}
-
-//delete product from cart
-
-//update product in cart
-
-//get all products in cart
-
-
-

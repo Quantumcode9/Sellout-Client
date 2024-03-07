@@ -5,11 +5,10 @@ import { createTV } from '../../api/tv'
 import messages  from '../shared/AutoDismissAlert/messages'
 
 const TVCreate = (props) => {
-    // pull out  props
+
     const { user, msgAlert } = props
 
     const navigate = useNavigate()
-    // build state object
     const [tv, setTV] = useState({
         modelNumber: '',
         size: '',

@@ -42,8 +42,8 @@ h1 {
       width: 105%;
       margin: 2.5%;
     
-      @media (max-width: 600px) { /* adjust as needed */
-        width:100%; /* adjust as needed */
+      @media (max-width: 600px) { 
+        width:100%; 
       }
     }
 
@@ -53,7 +53,7 @@ h1 {
       width: 45%;
       margin: 2.5%;
     
-      @media (max-width: 576px) { /* adjust as needed */
+      @media (max-width: 576px) { 
         width: 100%;
       }
     }

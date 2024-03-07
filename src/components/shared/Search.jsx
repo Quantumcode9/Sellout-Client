@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { searchProducts, createProduct } from '../../api/product';
 import { Link } from 'react-router-dom';
-import { Card, Button, Container, Carousel, Form } from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-
 import { addToCart } from '../../api/cart';
 import messages from '../shared/AutoDismissAlert/messages';
-
-// import { response } from 'express';
 
 
 
@@ -58,31 +55,6 @@ const Search = () => {
         });
     };
   
-    
-
-
-    // const handleViewClick = (productId) => {
-    //   axios.get(`/api/products/${productId}`)
-    //     .then(response => {
-    //       if (response.status === 404) {
-    //         const product = products.find(product => product.id === productId);
-    //         axios.post('/api/products', { product })
-    //           .then(() => {
-    //             navigate(`/products/${productId}`);
-    //           })
-    //           .catch(error => {
-    //             console.error('Failed to create product:', error);
-    //           });
-    //       } else {
-            
-    //         navigate(`/products/${productId}`);
-    //       }
-    //     })
-    //     .catch(error => {
-    //       console.error('Failed to get product:', error);
-    //     });
-    // };
-
 
     const handleAddToCart = (productId) => {
       addToCart(productId)

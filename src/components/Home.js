@@ -12,14 +12,6 @@ import Laptops from './products/Laptops'
 
 const Home = (props) => {
 	const { msgAlert } = props
-	// const [products, setProducts] = useState([]);
-
-	// useEffect(() => {
-	// 	getLaptops()
-	// 		.then(response => setProducts(response.data.products))
-	// 		.catch(error => console.error(error));
-	// }
-	// 	, []);
 
 	return (
 		<div className="home-container">

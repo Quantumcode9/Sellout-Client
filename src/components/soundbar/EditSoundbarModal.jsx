@@ -15,12 +15,6 @@ const EditSoundbarModal = (props) => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
 
-            // if (updatedName === 'isSqueaky' && e.target.checked) {
-            //     updatedValue = true
-            // } else if (updatedName === 'isSqueaky' && !e.target.checked) {
-            //     updatedValue = false
-            // }
-
             const updatedSoundbar = { [updatedName] : updatedValue }
 
             return {
@@ -31,9 +25,7 @@ const EditSoundbarModal = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // make the API call
         updateSoundbar(user, tv, soundbar)
-            // close the modal
             .then(() => handleClose())
             .then(() => {
                 msgAlert({
