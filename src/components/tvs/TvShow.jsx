@@ -125,78 +125,73 @@ const TVShow = (props) => {
         return <LoadingScreen />
     }
 
-    return (
-        <>
-        <Container className='hero'>
-            <Card className="my-card">
-            <Card.Header style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                    {tv.brand} { tv.modelNumber}
-                    </Card.Header>
-                    <Card.Body style={{ overflow: 'hidden' }}>
-                        <img src={tv.image2 ? tv.image2 : tv.image} alt={tv.modelNumber} className='tv-image'/>
-                    </Card.Body>
-                    <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                    {tv.brand} { tv.modelNumber}
-                    </Card.Footer>
-                </Card>
-                    </Container>
-                    
-                    <Container>
-                    <Row>
-                    <Col md={6}>
-                        <Card>
-                         <Card.Header style={{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
-                        {tv.brand} {tv.modelNumber}
-                        </Card.Header>
-                        <Card.Body className="image-contain">
-                            
-                        <img src={tv.image} alt={tv.modelNumber} className='tv-image-profile'/>
-                        <img src={tv.image3 || tv.image} alt={`${tv.modelNumber}-hover`} className='tv-image-hover'/>
-                    
+return (
+<>
+<Container className='hero'>
+    <Card className="my-card">
+        <Card.Header style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            {tv.brand} { tv.modelNumber}
+        </Card.Header>
+        <Card.Body style={{ overflow: 'hidden' }}>
+            <img src={tv.image2 ? tv.image2 : tv.image} alt={tv.modelNumber} className='tv-image'/>
         </Card.Body>
-                    <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            {tv.brand} { tv.modelNumber}
+        </Card.Footer>
+    </Card>
+</Container>
+            
+<Container>
+    <Row>
+        <Col md={6}>
+        <Card>
+            <Card.Header style={{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
+            {tv.brand} {tv.modelNumber}
+            </Card.Header>
+            <Card.Body className="image-contain">
                 
-                        {
+            <img src={tv.image} alt={tv.modelNumber} className='tv-image-profile'/>
+            <img src={tv.image3 || tv.image} alt={`${tv.modelNumber}-hover`} className='tv-image-hover'/>
+        
+            </Card.Body>      
+            <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            {
+                tv.owner && user && tv.owner._id === user._id
+                ?
+                <>
+                    <Button
+                        className='m-2'
+                        variant='warning'
+                        onClick={() => setEditModalShow(true)}
+                    >
+                        Update TV
+                    </Button>
+                    <Button
+                        className='m-2'
+                        variant='danger'
+                        onClick={() => deleteTV()}
+                    >
+                        Delete TV 
+                    </Button>
+                    <Button
+                        className='m-2 cart-button'
+                        variant='dark'
+                onClick={() => handleAddToCart(tv)}
+                    >
+                        Add to Cart
+                    </Button>
+                </>
+                :
+                null
+            }
+            <br/>
+            {
+            }
+        </Card.Footer>
 
-                            tv.owner && user && tv.owner._id === user._id
-                            ?
-                            <>
-                                <Button
-                                    className='m-2'
-                                    variant='warning'
-                                    onClick={() => setEditModalShow(true)}
-                                >
-                                    Update TV
-                                </Button>
-                                <Button
-                                    className='m-2'
-                                    variant='danger'
-                                    onClick={() => deleteTV()}
-                                >
-                                    Delete TV 
-                                </Button>
-                                <Button
-                                    className='m-2 cart-button'
-                                    variant='dark'
-                            onClick={() => handleAddToCart(tv)}
-                                >
-                                    Add to Cart
-                                </Button>
-
-                            </>
-                            :
-                            null
-                        }
-                        <br/>
-                        {
-
-                        }
-                    </Card.Footer>
-
-                </Card>
-                <br/>
-
-                </Col>
+        </Card>
+        <br/>
+        </Col>
                 <Col md={6}>
                 <Card>
                 <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
@@ -246,13 +241,13 @@ const TVShow = (props) => {
         </Row>
 
         
-                <Row>
+        <Row>
     <Col md={6}>
-                <Card>
-                <Card.Header style={{ color: 'black', backgroundColor: `rgba(255,255,255,0.80)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        Tech Specs
-                    </Card.Header>
-    <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+    <Card>
+        <Card.Header style={{ color: 'black', backgroundColor: `rgba(255,255,255,0.80)`, fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            Tech Specs
+        </Card.Header>
+        <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
         <Card.Text className="card-text">
             Size:<strong> {tv.size}"</strong><hr/> 
             Type:<strong> {tv.type}</strong> <hr/>
@@ -275,140 +270,145 @@ const TVShow = (props) => {
             VRR:<strong> {tv.vrr ? 'Yes' : 'No'}</strong><hr/>
             SKU:<strong> {tv.sku}</strong><hr/> 
         </Card.Text>
-    </Card.Body>
-</Card>
-                </Col>
-                <Col md={6}>
-                <Card>
-                    <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        Reviews
-                    </Card.Header>
-                    <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        <Card.Text>
-                            Overall Rating: <span style={{ color: tv.overallRating >= 8 ? 'green' : tv.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{tv.overallRating}/10</strong></span>
-                            <hr/>
-                    Build Quality:  <div style={{
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '50%',
-                    backgroundColor: tv.buildQuality === 'poor' ? 'red' :
-                    tv.buildQuality === 'fair' ? 'yellow' :
-                    tv.buildQuality === 'good' ? 'lightgreen' : 'green',
-                    display: 'inline-block',
-                    }} /> <hr/>
-                            Overview: <br/> 
-                            {tv.overview}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-                <br/>
-                <Card>
-                    <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        User Reviews
-                    </Card.Header>
-                    <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                    <Card.Text>
-                    Seen the {tv.brand} {tv.modelNumber}? 
-                    <hr/>
-                    <Button
-                            className='m-2'
-                            variant='info'
-                            onClick={() => setReviewModalShow(true)}
-                        >
-                        Leave a Review!
-                        </Button>
-                   
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-                <br/>
+        </Card.Body>
+    </Card>
+    </Col>
+    <Col md={6}>
+    <Card>
+        <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            Reviews
+        </Card.Header>
+        <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            <Card.Text>
+                Overall Rating: <span style={{ color: tv.overallRating >= 8 ? 'green' : tv.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{tv.overallRating}/10</strong></span>
+                <hr/>
+                Build Quality:  <div style={{
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
+                backgroundColor: tv.buildQuality === 'poor' ? 'red' :
+                tv.buildQuality === 'fair' ? 'yellow' :
+                tv.buildQuality === 'good' ? 'lightgreen' : 'green',
+                display: 'inline-block',
+                }} /> <hr/>
+                Overview: <br/> 
+                {tv.overview}
+            </Card.Text>
+        </Card.Body>
+    </Card>
+    <br/>
+    <Card>
+        <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            User Reviews
+        </Card.Header>
+        <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        <Card.Text>
+        Seen the {tv.brand} {tv.modelNumber}? 
+        <hr/>
+        <Button
+            className='m-2'
+            variant='info'
+            onClick={() => {
+            if (user) {
+            setReviewModalShow(true);
+            } else {
+            navigate('/sign-in');
+            }
+            }}>
+            Leave a Review!
+        </Button>
+
+        </Card.Text>
+        </Card.Body>
+    </Card>
+    <br/>
                 
         
-                <Card>
-                    <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        Comments
+    <Card>
+        <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+            Comments
 
-                    </Card.Header>
-                    <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.85)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                    <Card.Text>
-                    {tv.reviews.map((review, index) => (
-                    <div key={review._id}> 
-                        <strong>{review.name}</strong>: {review.comment}
-                        <br />
-                        Rating: <span style={{ color: review.rating >= 8 ? 'green' : review.rating >= 6 ? 'yellow' : 'red' }}>
-                        <strong>{review.rating}/10</strong>
-                        </span>
-                        <hr />
-                        {user && review.user && user._id === review.user 
-                    ? (
-                            <div>
-                            <Button
-                                className='m-2'
-                                variant='warning'
-                                onClick={() => {
-                                    console.log(review);
-                                    setUpdatedReview(review._id);
-                            
-                                    setEditReviewModalShow(true)
-                        
-                                }}
-                            >
-                                Edit Review
-                            </Button>
-                            <Button
-                                className='m-2'
-                                variant='danger'
-                                onClick={() => handleDeleteReview(review._id)}
-                            >
-                                Delete Review
-                            </Button>
-                            </div>
-                        
-
-
-                        )
-                        : null
-                    }
-                    </div>
-                    ))}
-                </Card.Text>
-                </Card.Body>
-                </Card>
+        </Card.Header>
+        <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.85)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        <Card.Text>
+        {tv.reviews.map((review, index) => (
+        <div key={review._id}> 
+            <strong>{review.name}</strong>: {review.comment}
+            <br />
+            Rating: <span style={{ color: review.rating >= 8 ? 'green' : review.rating >= 6 ? 'yellow' : 'red' }}>
+            <strong>{review.rating}/10</strong>
+            </span>
+            <hr />
+            {user && review.user && user._id === review.user 
+        ? (
+                <div>
+                <Button
+                    className='m-2'
+                    variant='warning'
+                    onClick={() => {
+                        console.log(review);
+                        setUpdatedReview(review._id);
+                
+                        setEditReviewModalShow(true)
             
-            </Col>
-            </Row>
+                    }}
+                >
+                    Edit Review
+                </Button>
+                <Button
+                    className='m-2'
+                    variant='danger'
+                    onClick={() => handleDeleteReview(review._id)}
+                >
+                    Delete Review
+                </Button>
+                </div>
+            
 
-            </Container>
-            <Container className='m-2' style={soundbarCardContainerLayout}>
-                {/* {soundbarCards} */}
-            </Container>
-            <EditTVModal 
-                user={user}
-                show={editModalShow}
-                updateTV={updateTV}
-                msgAlert={msgAlert}
-                handleClose={() => setEditModalShow(false)}
-                tv={tv}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-            />
-            <NewReviewModal 
-                tvId={tv._id} 
-                tv={tv}
-                user={user} 
-                show={reviewModalShow}
-                msgAlert={msgAlert}
-                handleClose={() => setReviewModalShow(false)}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-            />
-            <EditReviewModal
-                tvId={tv._id}
-                tv={tv}
-                user={user}
-                updatedReview={updatedReview}
-                show={editReviewModalShow}
-                handleClose={() => setEditReviewModalShow(false)}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                msgAlert={msgAlert}
+
+            )
+            : null
+        }
+        </div>
+        ))}
+    </Card.Text>
+    </Card.Body>
+    </Card>
+
+</Col>
+</Row>
+
+</Container>
+<Container className='m-2' style={soundbarCardContainerLayout}>
+    {/* {soundbarCards} */}
+</Container>
+<EditTVModal 
+    user={user}
+    show={editModalShow}
+    updateTV={updateTV}
+    msgAlert={msgAlert}
+    handleClose={() => setEditModalShow(false)}
+    tv={tv}
+    triggerRefresh={() => setUpdated(prev => !prev)}
+/>
+<NewReviewModal 
+    tvId={tv._id} 
+    tv={tv}
+    user={user} 
+    show={reviewModalShow}
+    msgAlert={msgAlert}
+    handleClose={() => setReviewModalShow(false)}
+    triggerRefresh={() => setUpdated(prev => !prev)}
+/>
+<EditReviewModal
+    tvId={tv._id}
+    tv={tv}
+    user={user}
+    updatedReview={updatedReview}
+    show={editReviewModalShow}
+    handleClose={() => setEditReviewModalShow(false)}
+    triggerRefresh={() => setUpdated(prev => !prev)}
+    msgAlert={msgAlert}
 />
         </>
     )

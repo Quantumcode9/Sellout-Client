@@ -85,7 +85,7 @@ const alwaysOptions = (
 )
 return (
 <>
-	<Navbar bg='' variant='l' expand=''>
+	<Navbar bg='' variant='l' expand='' className='navbar sticky-top'>
 	<Navbar.Brand className=''>
 	<Link to='/' style={linkStyle}>
 		SELLOUT
@@ -146,13 +146,18 @@ return (
 <header>
   <button className="hamburger" onClick={toggleSidebar}></button>
   <nav className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+  {user ? (
+  <p style={{ textDecoration: 'underline', color: 'white', textAlign:'center' }}>{user.name}</p>
+) : (
+  <Link to="/sign-in" className="link" onClick={toggleSidebar} style={{ textDecoration: 'underline' }}>
+    SIGN IN
+  </Link>
+)}
     {alwaysOptions}
     {user ? authenticatedOptions : unauthenticatedOptions}
-
 	<Link to='tvs/TvsIndex' className='link' onClick={toggleSidebar}>
-		TVs
-	</Link>
-
+	TVs
+    </Link>
 	<Link to='/soundbars' className='link' onClick={toggleSidebar}>
 	Soundbars
 	</Link>
@@ -167,10 +172,10 @@ return (
     {showSideOptions && (
 
       <div className="secondary-sidebar">
-          <Link to='change-password' className='link' onClick={toggleSideOptions}>
+          <Link to='change-password' className='link' onClick={toggleSidebar}>
             Change Password
           </Link>
-          <Link to='sign-out' className='link' onClick={toggleSideOptions}>
+          <Link to='sign-out' className='link' onClick={toggleSidebar}>
             Sign Out
           </Link>
       </div>

@@ -98,7 +98,7 @@ const StreamingIndex = (props) => {
   {product.salePrice < product.regularPrice && <Card.Text style={{ color: 'red', overflow: 'hidden',marginLeft: '10px' }}> ${product.salePrice}</Card.Text>}
 </Card.Body>
         <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
-        <Button variant="primary" onClick={() => handleSubmit(product)}>View</Button>
+        <Button variant="light" onClick={() => handleSubmit(product)}>View</Button>
       </Card.Footer>
     </Card>
   ))}

@@ -27,23 +27,7 @@ const Laptops = (props) => {
 
     const navigate = useNavigate();
 
-    const handleAddToCart = (laptopId) => {
-        addToCart(user, laptopId)
-            .then(() => {
-                msgAlert({
-                    heading: 'Laptop Added to Cart',
-                    message: messages.addToCartSuccess,
-                    variant: 'success'
-                })
-            })
-            .catch(() => {
-                msgAlert({
-                    heading: 'Laptop Add to Cart Failed',
-                    message: messages.addToCartFailure,
-                    variant: 'danger'
-                })
-            })
-    }
+
 
     const handleSubmit = (productData) => {
         createProduct(productData)
@@ -56,7 +40,8 @@ const Laptops = (props) => {
             }
           })
           .catch(err => {
-            // handle error
+            console.error(err);
+            msgAlert({ message: messages.addProductFailure, variant: 'danger' });
           });
       };
 
@@ -65,7 +50,7 @@ const Laptops = (props) => {
         infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 2,
         responsive: [
           {
             breakpoint: 1024,
@@ -88,34 +73,33 @@ const Laptops = (props) => {
       };
 
 
-    
     return (
-        <Container>
+    <Container>
         <h1>Laptop Deals</h1>
-        <Slider {...settings}>
+    
+    <Slider {...settings}>
   {products.map(product => (
-   <Card key={product.id} style={{ width: '18rem', height: '16rem', margin: '3rem', overflow: 'hidden' }}>
-  <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+ 
+   <Card key={product.id} className='laptopCard'>
+  <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '4.5rem', overflow: 'hidden',  fontSize: '1.3rem' }}>
     {product.name}
   </Card.Header>
   <Card.Img variant="top" src={product.image} className="card-img" />
-  <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', height: '5rem' }}>
+  <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', whiteSpace: 'nowrap', height: '4rem' }}>
   <Card.Text style={{ color: 'black', textDecoration: product.salePrice < product.regularPrice ? 'line-through' : 'none' }}>
     ${product.regularPrice}
   </Card.Text>
   {product.salePrice < product.regularPrice && <Card.Text style={{ color: 'red', overflow: 'hidden',marginLeft: '10px' }}> ${product.salePrice}</Card.Text>}
-</Card.Body>
+  </Card.Body>
         <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
-        <Button variant="primary" onClick={() => handleSubmit(product)}>View</Button>
-
-        <Button variant="dark" onClick={() => handleAddToCart(product.id)}>
-          Add to Cart 
-        </Button>
-      </Card.Footer>
+        <Button variant="light" onClick={() => handleSubmit(product)}>View</Button>
+    </Card.Footer>
     </Card>
+    
   ))}
-</Slider>
-        </Container>
+  </Slider>
+ 
+    </Container>
     );
     }
 

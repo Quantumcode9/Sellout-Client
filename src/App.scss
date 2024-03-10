@@ -15,33 +15,11 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 .App-body {
   padding: 20px;
   background-color: rgba(0,0,0,0.85);
-  /* background-color: #000000; */
-  min-height: 100vh;
+  min-height: calc(100vh - 50px); 
   justify-content: center;
   text-align: center;
   font-size: calc(10px + 2vmin);
@@ -49,7 +27,36 @@
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
+  overflow: hidden;
 }
+
+@media screen  and (max-width: 768px) {
+  .App-body {
+    padding: 0;
+  }
+  }
+  
+
+
+  html, body {
+    background-color: rgba(0,0,0,0.85);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+  }
+
+
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
 
 
 
@@ -104,3 +111,66 @@
   color: #40E0D0;
 }
 
+
+
+// FORMS
+
+form {
+  max-width: 1000px; 
+  margin: 20px auto;
+  padding: 10px;
+  background: #e8e8e8; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  font-size: 23px;
+  font-family: 'Lucida Sans ,Lucida Sans Regular';
+  color: black;
+  border: 1px solid black;
+}
+@media screen and (max-width: 968px) {
+  form {
+    padding: 0;
+    font-size: 16px;
+  }
+  }
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-family: 'Lucida Sans ,Lucida Sans Regular';
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #40E0D0;
+  box-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+}
+
+
+
+.laptop-container {
+  margin: 4px;
+}
+
+
+.laptopCard {
+  width: 18rem;
+  height: 15rem;
+  overflow: hidden;
+}
+
+
+.card:hover {
+  border: 1px solid #ffffff; 
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  transition: border-color 0.3s ease;
+}

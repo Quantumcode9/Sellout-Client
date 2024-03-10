@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getDevice } from '../../api/device'
@@ -11,20 +10,12 @@ import './DeviceShow.scss'
 // import EditDeviceModal from './EditDeviceModal'
 
 
-
-
-
-
 const DeviceShow = (props) => {
     const { id } = useParams()
     const { user, msgAlert } = props
 
     const [device, setDevice] = useState(null)
-    const [editModalShow, setEditModalShow] = useState(false)
-    const [editReviewModalShow, setEditReviewModalShow] = useState(false)
-    const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
-
 
     useEffect(() => {
         getDevice(id)
@@ -36,12 +27,9 @@ const DeviceShow = (props) => {
                     variant: 'danger'
                 })
             })
-    }, [updated])
+    }, [id, msgAlert])
     
-
-
     const [cartItems, setCartItems] = useState([])
-
     const handleAddToCart = (device) => {
         addToCart(device._id, user)
         .then(res => {
@@ -68,25 +56,27 @@ const DeviceShow = (props) => {
 
     return (
         <>
-        <Container className='hero'>
-            <Card className="my-card">
-            <Card.Header style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                   { device.name}
-                    </Card.Header>
-                    <Card.Body style={{ overflow: 'hidden' }}>
-                    {device.image2 && <img src={device.image2} alt={device.modelNumber} className='tv-image'/>}
-                    </Card.Body>
-                    <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                    {device.manufacturer} 
-                    </Card.Footer>
-                </Card>
-        </Container>
+        {device.image2 && (
+    <Container className='hero'>
+        <Card className="my-card">
+            <Card.Header style={{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+                {device.name}
+            </Card.Header>
+            <Card.Body style={{ overflow: 'hidden' }}>
+                <img src={device.image2} alt={device.modelNumber} className='tv-image'/>
+            </Card.Body>
+            <Card.Footer style={{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+                {device.manufacturer} 
+            </Card.Footer>
+        </Card>
+    </Container>
+        )}
                     
         <Container className=''>
             <Row>
                 <Col md={6}>
                 <Card>
-                    <Card.Header style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+                <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', fontSize: '15px', height: '4rem' }}>
                     { device.name}
                     </Card.Header>
                     <Card.Body>
@@ -99,21 +89,6 @@ const DeviceShow = (props) => {
                             device.owner && user && device.owner._id === user._id
                             ?
                             <>
-                                <Button
-                                    className='m-2'
-                                    variant='warning'
-                                    onClick={() => setEditModalShow(true)}
-                                >
-                                    Update
-                                </Button>
-                                <Button
-                                    className='m-2 cart-button'
-                                    variant='dark'
-                            onClick={() => handleAddToCart(device)}
-                                >
-                                    Add to Cart
-                                </Button>
-
                             </>
                             :
                             null
@@ -196,22 +171,22 @@ const DeviceShow = (props) => {
 </Card>
     </Col>
         <Col md={6}>
-                <Card>
-                    <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        Reviews
-                    </Card.Header>
-                    <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                        <Card.Text>
-                        Overall Rating: <span style={{ color: device.overallRating >= 8 ? 'green' : device.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{device.overallRating}/10</strong></span>
-                        <hr/>
-                        Overview: <br/> 
-                        {device.overview}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-                </Row>
-        </Container>
+        <Card>
+            <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+                Reviews
+            </Card.Header>
+            <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+                <Card.Text>
+                Overall Rating: <span style={{ color: device.overallRating >= 8 ? 'green' : device.overallRating >= 6 ? 'yellow' : 'red' }}><strong>{device.overallRating}/10</strong></span>
+                <hr/>
+                Overview: <br/> 
+                {device.overview}
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    </Col>
+        </Row>
+</Container>
 
         </>
 

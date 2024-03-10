@@ -87,12 +87,12 @@ return (
 <div>
   <div>
   <Form onSubmit={handleSearch}>
-    <Form.Group controlId="searchKeyword" style={{ width: '50%', margin: 'auto' }}>
+    <Form.Group controlId="searchKeyword" style={{ width: '60%', margin: 'auto', marginTop: '20px' }}>
       <Form.Control
         type="text"
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
-        placeholder="Search"
+        placeholder="Search for products..."
       />
     </Form.Group>
     <Button variant="dark" type="submit">

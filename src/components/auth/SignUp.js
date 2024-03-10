@@ -64,13 +64,13 @@ const SignUp = (props) => {
                 <h3>Sign Up</h3>
                 <Form onSubmit={onSignUp}>
                     <Form.Group controlId='name'> {/* Add this form group */}
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Username</Form.Label>
                 <Form.Control
                 required
                 type='text'
                 name='name'
                 value={name}
-                placeholder='Enter name'
+                placeholder='Enter username'
              onChange={e => setName(e.target.value)}
             />
             </Form.Group>

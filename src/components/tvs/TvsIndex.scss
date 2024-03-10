@@ -64,10 +64,7 @@
         }
     }
 
-.ca {
-  margin-bottom: 70px;
 
-}
   
 
 .slick-dots {
@@ -83,9 +80,7 @@
   .slick-dots {
     bottom: -20px;
   }
-  .ca {
-    margin-bottom: 30px;
-  }
+
 
 
 }
@@ -93,8 +88,22 @@
 
 @media (max-width: 576px) {
   .dropdown-menu {
-    /* Add your CSS for smaller screens here */
     width: 100%;
     text-align: center;
   }
 }
+
+
+.tvCards {
+  width: 50%;
+  align-self: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+
+
+// FORMS
+

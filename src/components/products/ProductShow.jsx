@@ -130,18 +130,21 @@ import './ProductShow.scss';
         <h2>Features</h2>
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-        {product.features.map(feature => (
-        <div key={feature._id}>
+
+    {product.features.slice(0, 10).map(feature => (
+  <div key={feature._id}>
     {feature.feature.split('\n').map((paragraph, index) => (
-      <Card.Text key={index}>
-        {index === 0 
-          ? <strong dangerouslySetInnerHTML={{ __html: paragraph }}></strong> 
-          : <span dangerouslySetInnerHTML={{ __html: paragraph }}></span>
-        }
-      </Card.Text>
+      paragraph.trim() !== '' && (
+        <Card.Text key={index}>
+          {index === 0 
+            ? <strong dangerouslySetInnerHTML={{ __html: paragraph }}></strong> 
+            : <span dangerouslySetInnerHTML={{ __html: paragraph }}></span>
+          }
+        </Card.Text>
+      )
     ))}
     <hr />  
-        </div>
+  </div>
 ))}
         </Card.Body>
       </Card>
@@ -156,7 +159,7 @@ import './ProductShow.scss';
       {product.details.map(detail => (
         <div key={detail._id.$oid}>
           <Card.Text>
-          <strong>{detail.name}</strong><br/><italic>{detail.value}</italic><hr />
+          <strong>{detail.name}</strong><br/>{detail.value}<hr />
           </Card.Text>
           <hr />
         </div>

@@ -24,7 +24,9 @@ const TVsIndex = (props) => {
     refreshRate: '',
     antiGlare: null,
     vrr: null,
-    brand: ''
+    brand: '',
+    price: ''
+  
   });
 
   // destructure our props
@@ -67,11 +69,32 @@ const handleInputChange = (event) => {
   }
 
 
+  const getNoResultsMessage = () => {
+    if (filters.price && filters.size) {
+      return `No ${filters.size}' TV's are available under $${filters.price}.`;
+    }
+    if (filters.price && filters.refreshRate) {
+      return `No TVs are available under $${filters.price} with a ${filters.refreshRate}Hz refresh rate.`;
+    }
+    if (filters.price) { 
+      return `No TVs are available under $${filters.price}.`;
+    }
+    if (filters.size) {
+      return `No TVs of size ${filters.size} are available.`;
+    }
+    // brand filter 
+    if (filters.brand) {
+      return `No ${filters.brand} TVs are available.`;
+    }
+    
+    return 'No TVs match our database';
+  };
+
 const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 4,
+  slidesToShow: 3,
   slidesToScroll: 3,
   responsive: [
     {
@@ -104,33 +127,20 @@ const settings = {
   ]
 };
 
+const filteredTvs = tvs
+  .filter(tv => filters.brand ? tv.brand === filters.brand : true)
+  .filter(tv => filters.size ? (() => {
+    const [minSize, maxSize] = filters.size.split('-').map(Number);
+    return tv.size >= minSize && tv.size <= maxSize;
+  })() : true)
+  .filter(tv => filters.refreshRate ? tv.refreshRate === Number(filters.refreshRate) : true)
+  .filter(tv => filters.antiGlare !== null ? tv.antiGlare === filters.antiGlare : true)
+  .filter(tv => filters.vrr !== null ? tv.vrr === filters.vrr : true)
+  .filter(tv => filters.price ? tv.price <= filters.price : true);
 
 
-const brands = ['Samsung', 'Sony', 'LG']
-  return (
-    <div>
-      {/* <TVDeals msgAlert={msgAlert} /> */}
-      <br />
-      <Container>
-        <h1>TVs</h1>
-        {/* Filter  */}
-        <div className="filter-form">
-          <FilterForm handleInputChange={handleInputChange} brands={brands} />
-        </div>
-          <hr />
-  
-          <Slider {...settings}>
-        {tvs
-          .filter(tv => filters.brand ? tv.brand === filters.brand : true)
-          .filter(tv => filters.size ? (() => {
-            const [minSize, maxSize] = filters.size.split('-').map(Number);
-            return tv.size >= minSize && tv.size <= maxSize;
-          })() : true)
-          .filter(tv => filters.refreshRate ? tv.refreshRate === Number(filters.refreshRate) : true)
-          .filter(tv => filters.antiGlare !== null ? tv.antiGlare === filters.antiGlare : true)
-          .filter(tv => filters.vrr !== null ? tv.vrr === filters.vrr : true)
-          // .filter(tv => filters.price ? tv.price <= Number(filters.price) : true)
-          .map(tv => (
+  const tvCards = filteredTvs.map(tv => (
+
     <Card key={tv._id} className="tvCards">
     <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap' }}>
       {/* {tv.brand}  */}
@@ -153,8 +163,36 @@ View
 </Button>
     </Card.Footer>
     </Card>
-      ))}
+  ));
+
+
+
+
+const brands = ['Samsung', 'Sony', 'LG']
+  return (
+    <div>
+      {/* <TVDeals msgAlert={msgAlert} /> */}
+      <br />
+      <Container>
+        <h1>TVs</h1>
+        {/* Filter  */}
+        <div className="filter-form">
+          <FilterForm handleInputChange={handleInputChange} brands={brands} />
+        </div>
+          <hr />
+          {filteredTvs.length > 1 ? (
+  <Slider {...settings}>
+          {tvCards}
   </Slider>
+          ) : (
+          tvCards
+          )}
+          {filteredTvs.length === 0 && (
+      <div className="no-results">
+              <h2>{getNoResultsMessage()}</h2>
+    <p>Try adjusting your filters...</p>
+  </div>
+)}
 </Container>
 </div>
 );

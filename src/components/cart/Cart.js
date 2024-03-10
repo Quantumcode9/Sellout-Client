@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getCartItems } from '../../api/cart';
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, Col, Row} from 'react-bootstrap';
 import { handleDeleteFromCart } from '../../api/cart';
 import { DeleteProductFromCart } from '../../api/cart';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+
 import './Cart.scss';
+
 
 
 const CartPage = ({ user }) => {
@@ -43,6 +46,19 @@ const CartPage = ({ user }) => {
         });
     }
 
+
+    const [flippedId, setFlippedId] = useState(null);
+    const handleFlip = (id) => {
+      if (flippedId === id) {
+        setFlippedId(null);
+      } else {
+        setFlippedId(id);
+      }
+    };
+
+
+
+
 // Calculates total price of items in cart
     const totalPrice = [...cart, ...cart2].reduce((total, item) => {
       let price;
@@ -64,53 +80,123 @@ const CartPage = ({ user }) => {
     return (
       
       <div className="cart-container">
-      <div>
+
         <h2>Your Cart</h2>
         <hr/>
-        {cart.map(item => (
-
-  <Card key={item._id} className="cart-card">
-  <div className="cart-img-container">
-  <Card.Img variant="top" src={item.image} />
-  </div>
-  <Card.Body className="cart-card-body" >
-  <Card.Text className='cart-title'>{item.name}</Card.Text>
-    <Card.Text>
-    Price: {`${item.price}.99`}
-    </Card.Text>
-  </Card.Body> 
-  <div className="cart-card-buttons">
-  <Button as={Link} to={`/tvs/${item._id}`} variant="dark">Back To Item Page</Button>
-    {/* Delete From Cart */}
-    <Button variant='' onClick={() => handleDelete(item._id)}>
-      Remove From Cart
-    </Button>
-  </div>
-</Card>
+        <div className="cart-card-container"> 
+        <div className="d-flex"> 
 
 
-))}
-{cart2.map(item => (
-  <Card key={item._id} className="cart-card">
-  <div className="cart-img-container">
-  <Card.Img variant="top" src={item.image} />
-  </div>
-  <Card.Body className="cart-card-body">
-  <Card.Text className='cart-title'>{item.name}</Card.Text>
-  <Card.Text style={{ color: item.salePrice < item.regularPrice ? 'red' : 'white' }}>
-  ${item.salePrice < item.regularPrice ? item.salePrice : item.regularPrice}
-</Card.Text>
-  </Card.Body>
-  <div className="cart-card-buttons">
-    
-    <Button as={Link} to={`/products/${item._id}`} variant="dark">Back To Item Page</Button>
-    {/* Delete From Cart */}
-    <Button variant='' onClick={() => handleDelete2(item._id)}>
-      Remove From Cart
-    </Button>
+        {[...cart, ...cart2].map(item => (
+          <div key={item._id} className="card-flipper" onClick={() => handleFlip(item._id)}>
+    <div className={`card-content ${flippedId === item._id ? 'card-flipping' : ''}`}>
+      {/* Front */}
+      <div className="card-face card-face-front">
+      <h3 className="title-card" style={{ 
+          display: '-webkit-box', 
+          WebkitBoxOrient: 'vertical', 
+          WebkitLineClamp: 2, 
+          overflow: 'hidden' 
+        }}>
+        {item.name}
+      </h3>
+      <div style={{ 
+          backgroundColor: 'white', 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '14.81vw', 
+          width: '100%', 
+          marginTop: '33%',
+        }}>
+          <img 
+            src={item.image} 
+            alt={item.name} 
+            style={{ maxHeight: '100%', maxWidth: '100%',}}/>
+</div>
+          <p className='price-cart-card' style={{ color: item.salePrice < item.regularPrice ? 'red' : 'white' }}>
+          ${item.salePrice < item.regularPrice ? item.salePrice : item.regularPrice || item.price}
+          </p>
+
+        <div className="cart-card-buttons">
+        {cart.includes(item) ? (
+            //cart
+          <Button as={Link} to={`/tvs/${item._id}`} variant="dark">Back To Item Page</Button>
+        ) : (
+          //cart2
+          <Button as={Link} to={`/products/${item._id}`} variant="dark">Back To Item Page</Button>
+        )}
+        </div>
+      </div>
+
+      
+      {/* Back */}
+      <div className="card-face card-face-back">
+        
+        <h3 className="title-card" style={{
+          display: '-webkit-box',
+          WebkitBoxOrient: 'vertical',
+          WebkitLineClamp: 2,
+          overflow: 'hidden'
+        }}>
+          {item.name}
+        </h3>
+        <div style={{
+          backgroundColor: 'white',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '14.81vw',
+          width: '100%',
+          marginTop: '33%',
+        }}>
+          <img
+            src={item.image}
+            alt={item.name}
+            style={{ maxHeight: '100%', maxWidth: '100%', }} />
+      </div>
+      
+      <p className='price-cart-card' style={{ color: item.salePrice < item.regularPrice ? 'red' : 'white' }}>
+          ${item.salePrice < item.regularPrice ? item.salePrice : item.regularPrice || item.price}
+          </p>
+        <div className="cart-card-buttons">
+        {cart.includes(item) ? (
+            // cart
+          <Button variant="danger" onClick={(e) => { e.stopPropagation(); handleDelete(item._id); }}>
+            Remove From Cart
+          </Button>  
+        ) : (
+          // cart2
+          <Button variant="danger" onClick={(e) => { e.stopPropagation(); handleDelete2(item._id); }}>
+            Remove From Cart
+          </Button>
+        )}
+          </div>
+       
+      </div> 
     </div>
-</Card>
+    
+  </div>
+
 ))}
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
 
 
       </div>
@@ -119,7 +205,7 @@ const CartPage = ({ user }) => {
       <hr/>
       <Button variant="btn btn-lg btn-outline-success">Checkout</Button>
       </div>
-      </div>
+    </div>
     );
   }
   
