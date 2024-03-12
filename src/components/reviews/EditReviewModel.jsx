@@ -44,9 +44,9 @@ const EditReviewModal = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <ReviewForm
-                   review={updatedReview}
-                   handleChange={handleChange}
-                   handleSubmit={onSubmit}
+                  review={updatedReview}
+                  handleChange={handleChange}
+                  handleSubmit={onSubmit}
                     heading='Edit Review'
                 />
             </Modal.Body>

@@ -6,9 +6,8 @@ import LoadingScreen from '../shared/LoadingScreen'
 import { Container, Card, Button, Row, Col  } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
-import './DeviceShow.scss'
-// import EditDeviceModal from './EditDeviceModal'
 
+// import EditDeviceModal from './EditDeviceModal'
 
 const DeviceShow = (props) => {
     const { id } = useParams()
@@ -71,41 +70,36 @@ const DeviceShow = (props) => {
         </Card>
     </Container>
         )}
-                    
-        <Container className=''>
+    <Container className=''>
             <Row>
                 <Col md={6}>
                 <Card>
-                <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', fontSize: '15px', height: '4rem' }}>
+    <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', fontSize: '15px', height: '4rem' }}>
                     { device.name}
                     </Card.Header>
                     <Card.Body>
                             <img src={device.image} alt={device.modelNumber} className='device-image'/>
                     </Card.Body>
                     <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-                
                         {
-
-                            device.owner && user && device.owner._id === user._id
-                            ?
-                            <>
-                            </>
-                            :
-                            null
+                        device.owner && user && device.owner._id === user._id
+                        ?
+                        <>
+                        </>
+                        :
+                        null
                         }
                         <br/>
                         {
-
-                        }
+                }
                     </Card.Footer>
-
                 </Card>
                 <br/>
 
                 </Col>
-                <Col md={6}>
-                <Card>
-                <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+        <Col md={6}>
+        <Card>
+        <Card.Header style={{ color: 'black', backgroundColor: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
         Features
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
@@ -190,9 +184,8 @@ const DeviceShow = (props) => {
 
         </>
 
-    )
+)
 }
-
 
 
 export default DeviceShow

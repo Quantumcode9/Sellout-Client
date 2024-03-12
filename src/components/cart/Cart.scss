@@ -8,120 +8,11 @@ $link-color: $primary-color;
 $base-font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
 
 .cart-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  background-color: $dark-bg;
-  color: $light-text;
-  padding: 20px;
-
-
-
-}
-
-.cart-img-container{
-  position: relative;
-  border-radius: 5px;
-  overflow: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 200px;
- max-height: 300px;
-  width: 300px;
-background-color: #ffffff;
-  justify-content: center;
-  margin: 0 auto;
-  overflow: hidden;
-
-
-  
-
-  @media screen and (max-width: 768px)
-  {
-    width: 100%;
-    max-width: 100%;
-    height: 250px;
-    
-  }
-}
-
-
-
-
-
-
-  // .cart-card-body {
-  //   background-color: rgba(0, 0, 0, 0.927);
-  //   font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
-  //   width: 100%;
-  // }
-
-//   .cart-card-buttons {
-//     display: flex;
-//     justify-content: space-between;
-//     padding: 10px;
-//     width: 100%;
-
-//     a, button {
-//       font-family: $base-font-family;
-//       padding: 10px;
-//       width: 100%;
-//     }
-
-//     .btn-dark {
-//       background-color: $primary-color;
-//       border-color: $primary-color;
-
-//       &:hover {
-//         background-color: white;
-//         color: $primary-color;
-//       }
-//     }
-
-//     button {
-//       background-color: $primary-color;
-//       border-color: $danger-color;
-//       color: $light-text;
-
-//       &:hover {
-//         background-color: darken($danger-color, 10%);
-//       }
-//     }
-//   }
-// }
-
-// .cart-title {
-//   color: $light-text;
-//   font-family: $base-font-family;
-//   font-size: 1.1rem;
-//   width: 100%;
-  
-
-// }
-
-// .font-size {
-//   font-size: 1.25rem;
-// }
-
-// @media screen and (max-width: 558px)
-// {
-//   .cart-title {
-//     font-size: 1rem;
-//   }
-
-//   .font-size {
-//     font-size: 1rem;
-//   }
-
-
-  
-
-
-
- .cart-container {
-display: flex;
-flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
   
  @media (max-width: 576px) { 
  flex-direction: column;
@@ -129,17 +20,12 @@ flex-wrap: wrap;
 }
 
 
-  
-  
-
   .cart-card img {
     width: 100%;
     max-height: 250px;
     max-width: 350px;
     object-fit: contain;
   }
-
-
 
     .checkout {
         position: fixed;
@@ -153,13 +39,13 @@ flex-wrap: wrap;
 
         @media (max-width: 526px) { 
             position: relative;
-            width: 100%;
+            width: 110%;
           }
         }
       
 
         .checkout button {
-            width: 100%;
+            width: 80%;
             background-color: white;
             color: black;
         }
@@ -168,44 +54,24 @@ flex-wrap: wrap;
             background-color: black;
             color: white;
         }
+  
         .cart-card-container {
-          height: 600px;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
           width: 100%;
-          left: 0;
-          right: 0;
-          display: flex;
+          max-width: 100%;
           justify-content: center;
           align-items: center;
-          display: flex;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          overflow-y: hidden;
-          white-space: nowrap;
-
-          margin: 0 auto;
-          z-index: 1;
-          transition: 0.6s ease-out;
+          flex-direction: row;
+          padding: 10px;
+          transition: transform 0.6s;
           transform-style: preserve-3d;
-        
-          @media (min-width: 600px) {
-            left: calc(50% - 300px);
-          }
+          cursor: pointer; 
+          position: relative;
+          margin: 0 auto;
         }
 
-        .d-flex {
-          display: flex;
-        }
-
-@media screen and (max-width: 768px)
-{
-  .cart-card-container {
-    // flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    left: 0;
-  }
-  
-}
         .card-content {
           display: flex;
           justify-content: center;
@@ -222,8 +88,8 @@ flex-wrap: wrap;
           transform: rotateY(180deg);
         }
 
-        .card-flipper {
-          width: 100%;
+        .card-flipping .card-face-front {
+          transform: rotateY(0deg);
         }
 
 // CARD FACES
@@ -231,24 +97,31 @@ flex-wrap: wrap;
           position: absolute;
           width: 100%;
           height: 100%;
+          display: flex;
+          justify-content: center;
           -webkit-backface-visibility: hidden; 
           backface-visibility: hidden;
+          border-radius: 10px;
+          display: flex;
+          height: 100vw;
+          width: 60vw;
+          max-height: 364px;
+          max-width: 260px;
+          background-color: #0202026e;
+          border-radius: 10px;
+          box-shadow: -1rem 0 3rem #000;
+
+          border: 1px solid #ffffff;
+          
         }
 // card faces front
         .card-face.card-face-front {
-        display: flex;
-        height: 50vw;
-        width: 30vw;
-        max-height: 364px;
-        max-width: 260px;
-        background-color: #17141d;
-        border-radius: 10px;
-        box-shadow: -1rem 0 3rem #000;
-        margin-right: -70px; //overlap
-        transition: transform 0.4s ease-out, margin 0.4s ease-out; 
-        position: relative;
-        left: 0px;
-        border: 1px solid #ffffff;
+          transform: rotateY(0deg);
+          transition: 0.6s ease-out;
+          border: 2px solid #ffffff;
+          position: relative;
+          transition: 0.4s ease-out;
+          cursor: pointer;
 }
 
         .card-face.card-face-front img {
@@ -257,57 +130,25 @@ flex-wrap: wrap;
           object-fit: contain;
         }
         
-        .card-face.card-face-front:not(:first-child) {
-          position: relative;
-          left: 50px;
-          transition: 0.4s ease-out;
-          margin-left: 60px;
-      }
+    
 
       .card-face.card-face-front:hover {
-        transform: translateY(-10px);
         transition: 0.6s ease-out;
-        margin-right: 10px;
         border: 2px solid #ffffff;
+        // margin-right: 0.22vw;
       }
 
       .card-face.card-face-front:hover ~ .card-face.card-face-front {
         position: relative;
-        left: 50px;
         transition: 0.4s ease-out;
-        margin-left: 60px;
       }
 
 // card faces back
         .card-face-back {
           transform: rotateY(180deg);
-          display: flex;
-          height: 50vw;
-          width: 30vw;
-          max-height: 364px;
-          max-width: 260px;
-          background-color: #0202026e;
-          border-radius: 10px;
-          box-shadow: -1rem 0 3rem #000;
-          margin-right: -50px; //overlap
-          transition: transform 0.4s ease-out, margin 0.4s ease-out; 
-          left: 0px;
-          border: 1px solid #ffffff;
-        }
-        @media screen and (max-width: 768px)
-        {
-          .card-face-back {
- 
-        
-            border: 1px solid #ffffff;
-          }
-          
+  
         }
 
-
-
-          
-        
 
         .card-face-back img {
           max-width: 100%; 
@@ -318,7 +159,6 @@ flex-wrap: wrap;
 
         .card-face-back:hover {
           transition: 0.6s ease-out;
-          margin-right: 0.22vw;
           border: 2px solid #ffffff;
         }
 
@@ -340,13 +180,12 @@ flex-wrap: wrap;
           color: white;
           font-weight: 100;
           position: absolute;
-          top: 60px;
+          top: 40px;
           font-size: 1.0rem;
           font-style: italic;
         
           @media (max-width: 768px) {
-            font-size: 0.8rem; 
-            top: 20px; 
+            top: 30px; 
           }
         }
         
@@ -367,23 +206,9 @@ flex-wrap: wrap;
           padding: 10px;
           width: 100%;
           font-size: 1.1rem;
-
-        }
-        @media screen and (max-width: 768px)
-        {
-          .cart-card-buttons {
-            padding: 5px;
-          }
-          .cart-card-buttons a, .cart-card-buttons button {
-            padding: 5px;
-            font-size: 2.5vw;
-   
-          }
-          .title-card {
-            font-size: 2.5vw;
-          }
-          .price-cart-card {
-            font-size: 2.5vw;
+          @media screen and (max-width: 768px) {
+            font-size: 1.0rem;
+            
           }
 
         }

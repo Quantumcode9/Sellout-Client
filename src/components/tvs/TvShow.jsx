@@ -155,7 +155,16 @@ return (
         
             </Card.Body>      
             <Card.Footer style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-            {
+            <Button
+            className='m-2 cart-button'
+            variant='dark'
+            onClick={() => handleAddToCart(tv)}
+            >
+            Add to Cart
+            </Button>
+
+           {
+                
                 tv.owner && user && tv.owner._id === user._id
                 ?
                 <>
@@ -172,13 +181,6 @@ return (
                         onClick={() => deleteTV()}
                     >
                         Delete TV 
-                    </Button>
-                    <Button
-                        className='m-2 cart-button'
-                        variant='dark'
-                onClick={() => handleAddToCart(tv)}
-                    >
-                        Add to Cart
                     </Button>
                 </>
                 :

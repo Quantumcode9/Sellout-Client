@@ -116,9 +116,9 @@
 // FORMS
 
 form {
-  max-width: 1000px; 
-  margin: 20px auto;
-  padding: 10px;
+ 
+  margin: 10px auto;
+
   background: #e8e8e8; 
   border-radius: 8px; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
@@ -149,11 +149,7 @@ form label {
   font-family: 'Lucida Sans ,Lucida Sans Regular';
 }
 
-.form-control:focus {
-  outline: none;
-  border-color: #40E0D0;
-  box-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-}
+
 
 
 

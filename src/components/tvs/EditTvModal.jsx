@@ -31,40 +31,40 @@ const EditTVModal = (props) => {
         })
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-        updateTV(user, tv)
-            .then(() => handleClose())
-            .then(() => {
-                msgAlert({
-                    heading: 'Oh Yeah!',
-                    message: messages.updateTVSuccess,
-                    variant: 'success'
-                })
+const onSubmit = (e) => {
+    e.preventDefault()
+    updateTV(user, tv)
+        .then(() => handleClose())
+        .then(() => {
+            msgAlert({
+                heading: 'Oh Yeah!',
+                message: messages.updateTVSuccess,
+                variant: 'success'
             })
-            .then(() => triggerRefresh())
-            .catch(() => {
-                msgAlert({
-                    heading: 'Oh no!',
-                    message: messages.generalError,
-                    variant: 'danger'
-                })
+        })
+        .then(() => triggerRefresh())
+        .catch(() => {
+            msgAlert({
+                heading: 'Oh no!',
+                message: messages.generalError,
+                variant: 'danger'
             })
-    }
+        })
+}
 
-    return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton />
-            <Modal.Body>
-                <TVForm 
-                    tv={tv}
-                    handleChange={onChange}
-                    handleSubmit={onSubmit}
-                    heading="Update TV"
-                />
-            </Modal.Body>
-        </Modal>
-    )
+return (
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton />
+        <Modal.Body>
+            <TVForm 
+                tv={tv}
+                handleChange={onChange}
+                handleSubmit={onSubmit}
+                heading="Update TV"
+            />
+        </Modal.Body>
+    </Modal>
+)
 }
 
 export default EditTVModal

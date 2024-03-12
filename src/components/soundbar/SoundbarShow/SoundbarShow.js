@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Container } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { removeSoundbar, getSoundbar } from '../../../api/soundbar'
+import { getSoundbar } from '../../../api/soundbar'
 import messages from '../../shared/AutoDismissAlert/messages'
 import EditSoundbarModal from '../EditSoundbarModal'
 import { useParams } from 'react-router-dom'
-import { addToCart } from '../../../api/cart'
 import './SoundbarShow.scss'
 
 const SoundbarShow = (props) => {
@@ -35,31 +34,10 @@ const SoundbarShow = (props) => {
     };
   }, [id]);
 
-  // const handleAddToCart = (soundbarId) => {
-  //   addToCart(user, soundbarId)
-  //     .then(() => {
-  //       msgAlert({
-  //         heading: 'Soundbar Added to Cart',
-  //         message: messages.addToCartSuccess,
-  //         variant: 'success'
-  //       })
-  //     })
-  //     .catch(() => {
-  //       msgAlert({
-  //         heading: 'Soundbar Add to Cart Failed',
-  //         message: messages.addToCartFailure,
-  //         variant: 'danger'
-  //       })
-  //     })
-  // }
 
-  
     if (!soundbar) {
       return <Container className="mt-5">Loading...</Container>;
     }
-
-
-
 
   return (
     <>
@@ -112,15 +90,12 @@ const SoundbarShow = (props) => {
         <Card.Header style= {{ backgroundColor: 'white', color: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular', border: '2px solid black' }}>
                       Details
                     </Card.Header>
-         <Card.Body className="sound-card-body"> 
-              
-                    <p>Price: $<strong>{soundbar.price}.99</strong></p>
-                    <p>Channels: <strong>{soundbar.channels}</strong></p>
-                    <p>
-                    Rating: <span style={{ color: soundbar.rating >= 8 ? 'green' : soundbar.rating >= 6 ? 'yellow' : 'red' }}><strong>{soundbar.rating}/10</strong></span>
-                    </p>
-                    <p>Dolby Atmos: <strong>{soundbar.dolbyAtmos ? 'Yes' : 'No'}</strong></p>
-            
+        <Card.Body className="sound-card-body"> 
+            <p>Price: $<strong>{soundbar.price}.99</strong></p>
+            <p>Channels: <strong>{soundbar.channels}</strong></p>
+            <p>Rating: <span style={{ color: soundbar.rating >= 8 ? 'green' : soundbar.rating >= 6 ? 'yellow' : 'red' }}><strong>{soundbar.rating}/10</strong></span>
+            </p>
+            <p>Dolby Atmos: <strong>{soundbar.dolbyAtmos ? 'Yes' : 'No'}</strong></p>
             </Card.Body>
         </Card>
         </Col>

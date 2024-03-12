@@ -94,7 +94,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 3,
   responsive: [
     {
@@ -116,7 +116,7 @@ const settings = {
       }
     },
     {
-      breakpoint: 550,
+      breakpoint: 365,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -142,7 +142,7 @@ const filteredTvs = tvs
   const tvCards = filteredTvs.map(tv => (
 
     <Card key={tv._id} className="tvCards">
-    <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap' }}>
+   <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', fontSize: '18px', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis',  whiteSpace: 'nowrap' }}>
       {/* {tv.brand}  */}
       {tv.modelNumber}
     </Card.Header>
@@ -150,7 +150,7 @@ const filteredTvs = tvs
     <Card.Img variant="top" src={tv.image} className="card-img" />
     <div className="size-label">{tv.size}'</div>
     </div>
-    <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', height: '5rem' }}>
+    <Card.Body style={{ display: 'flex', alignItems: 'right', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', height: '3rem' }}>
       <Card.Text style={{ color: 'black', textDecoration: tv.salePrice < tv.regularPrice ? 'line-through' : 'none' }}>
         ${tv.price}.99
         {tv.type === 'OLED' && <span style={{ color: 'red', marginLeft: '10px' }}>OLED</span>}
@@ -171,7 +171,7 @@ View
 const brands = ['Samsung', 'Sony', 'LG']
   return (
     <div>
-      {/* <TVDeals msgAlert={msgAlert} /> */}
+      {/* <TVDeals msgAlert={msgAlert} />  */}
       <br />
       <Container>
         <h1>TVs</h1>

@@ -84,9 +84,6 @@ const CartPage = ({ user }) => {
         <h2>Your Cart</h2>
         <hr/>
         <div className="cart-card-container"> 
-        <div className="d-flex"> 
-
-
         {[...cart, ...cart2].map(item => (
           <div key={item._id} className="card-flipper" onClick={() => handleFlip(item._id)}>
     <div className={`card-content ${flippedId === item._id ? 'card-flipping' : ''}`}>
@@ -105,7 +102,7 @@ const CartPage = ({ user }) => {
           display: 'flex', 
           justifyContent: 'center', 
           alignItems: 'center', 
-          height: '14.81vw', 
+          height: '50%', 
           width: '100%', 
           marginTop: '33%',
         }}>
@@ -146,7 +143,7 @@ const CartPage = ({ user }) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '14.81vw',
+          height: '50%', 
           width: '100%',
           marginTop: '33%',
         }}>
@@ -179,16 +176,6 @@ const CartPage = ({ user }) => {
   </div>
 
 ))}
-
-</div>
-
-
-
-
-
-
-
-
 
 
 

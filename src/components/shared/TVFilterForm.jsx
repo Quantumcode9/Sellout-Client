@@ -2,9 +2,9 @@ import { Form, Button, Col, Row } from 'react-bootstrap';
 
 const FilterForm = ({ handleInputChange, brands}) => (
         <Form>
-            <Row xs={2} sm={2} lg={5} xl={6}>
+            <Row xs={2} sm={2} lg={6} xl={6}>
             <Col md={3}>
-                <Form.Group controlId="formGridSize"style={{ width: '80%', margin: 'auto' }}>
+                <Form.Group controlId="formGridSize"style={{ width: '80%', margin: '' }}>
                 <Form.Label style={{ textAlign: 'center' }}>Size</Form.Label>
                 <Form.Control as="select" name="size" onChange={handleInputChange}>
                     <option value="">Select size...</option>
@@ -20,7 +20,7 @@ const FilterForm = ({ handleInputChange, brands}) => (
                 </Form.Group>
             </Col>
             <Col md={3}>
-                <Form.Group controlId="formGridRefreshRate" style={{ width: '80%', margin: 'auto' }}>
+                <Form.Group controlId="formGridRefreshRate" style={{ width: '90%', margin: '' }}>
                 <Form.Label>Refresh Rate</Form.Label>
                 <Form.Control as="select" name="refreshRate" onChange={handleInputChange}>
                     <option value="">Select refresh rate...</option>
@@ -43,7 +43,7 @@ const FilterForm = ({ handleInputChange, brands}) => (
                 </Form.Group>
             </Col>
             <Col md={2}>
-                <Form.Group controlId="formGridBrand" style={{ width: '80%', margin: 'auto' }}>
+                <Form.Group controlId="formGridBrand" style={{ width: '80%', margin: '' }}>
                 <Form.Label>Brand</Form.Label>
                 <Form.Select name="brand" defaultValue="" onChange={handleInputChange}>
                     <option value="">All</option>
@@ -54,7 +54,7 @@ const FilterForm = ({ handleInputChange, brands}) => (
                 </Form.Group>
             </Col>
             <Col md={2}>
-                <Form.Group controlId="formGridPrice" style={{ width: '80%', margin: 'auto' }}>
+                <Form.Group controlId="formGridPrice" style={{ width: '80%', margin: '' }}>
                 <Form.Label>Price</Form.Label>
                 <Form.Control as="select" name="price" onChange={handleInputChange}>
                     <option value="">Any</option>

@@ -15,16 +15,16 @@ const Header = ({ user }) => {
         setSidebarOpen(!sidebarOpen);
         setShowSideOptions(false);
         setShowAdminOptions(false);	
-      };
+    };
 
 	function toggleUserOptions() {
 	setShowUserOptions(prevState => !prevState);
 	// Closes the secondary sidebar after 10 seconds
 	if (!showUserOptions) {
 		setTimeout(() => {
-		  setShowUserOptions(false);
+		setShowUserOptions(false);
 		}, 10000);
-	  }
+	}
 	}
 	
     function toggleSideOptions() {
@@ -43,34 +43,34 @@ const linkStyle = {
 
 const unauthenticatedOptions = (
 	<>
-  <Nav.Item className=''>
-    <Link to='sign-up' className='link'>Sign Up</Link>
-  </Nav.Item>
-  <Nav.Item className=''>
-    <Link to='sign-in' className='link'>Sign In</Link>
-  </Nav.Item>
+<Nav.Item className=''>
+<Link to='sign-up' className='link'>Sign Up</Link>
+</Nav.Item>
+<Nav.Item className=''>
+<Link to='sign-in' className='link'>Sign In</Link>
+</Nav.Item>
 </>
 )
 const authenticatedOptions = (
 	<>
 
-		<Nav.Item className='nav-item'>
-		<Link to='/soundbars' className='link'>
-		Soundbars
-		</Link>
-		</Nav.Item>
-		<Nav.Item className='nav-item'>
-		<Link to='/streaming' className='link'>
-		Streaming
-		</Link>
-		</Nav.Item>
-	
+	<Nav.Item className='nav-item'>
+	<Link to='/soundbars' className='link'>
+	Soundbars
+	</Link>
+	</Nav.Item>
+	<Nav.Item className='nav-item'>
+	<Link to='/streaming' className='link'>
+	Streaming
+	</Link>
+	</Nav.Item>
 
-		<Nav.Item className='nav-item'>
-			<Link to='/search' className='link'>
-				Search
-			</Link>
-		</Nav.Item>
+
+	<Nav.Item className='nav-item'>
+		<Link to='/search' className='link'>
+			Search
+		</Link>
+	</Nav.Item>
 
 	</>
 )
@@ -96,13 +96,13 @@ return (
 		<span className='navbar-text mr-2'>Welcome, {user.name}</span>
 	)}
 	</Nav.Item>
-  {alwaysOptions}
-  {user ? authenticatedOptions : unauthenticatedOptions}
+{alwaysOptions}
+{user ? authenticatedOptions : unauthenticatedOptions}
  {/* <Nav.Item className='m-2'>
 	<button onClick={toggleAdminOptions}>Admin</button>
 </Nav.Item>    */}
 <Nav.Item className=''>
-	<button className='link' onClick={toggleUserOptions}>User</button>
+  {user && <button className='link' onClick={toggleUserOptions}>User</button>}
 </Nav.Item>
     {showUserOptions && (
 		
@@ -167,22 +167,22 @@ return (
 	<Link to='/search' className='link' onClick={toggleSidebar}>
 	Search
 	</Link>
-    <button className='link' onClick={toggleSideOptions}>User</button>
+	{user && <button className='link' onClick={toggleUserOptions}>User</button>}
 
     {showSideOptions && (
 
-      <div className="secondary-sidebar">
-          <Link to='change-password' className='link' onClick={toggleSidebar}>
-            Change Password
-          </Link>
-          <Link to='sign-out' className='link' onClick={toggleSidebar}>
-            Sign Out
-          </Link>
-      </div>
+	<div className="secondary-sidebar">
+		<Link to='change-password' className='link' onClick={toggleSidebar}>
+		Change Password
+		</Link>
+		<Link to='sign-out' className='link' onClick={toggleSidebar}>
+		Sign Out
+		</Link>
+	</div>
     )}
 
     {showAdminOptions && (
-      <Navbar bg="" variant="l" className="secondary-sidebar">
+    <Navbar bg="" variant="l" className="secondary-sidebar">
         <Link to='add-tv' className='link'>
             Add TV
         </Link>
@@ -194,11 +194,11 @@ return (
         </Link>
     </Navbar>
     )}
-       <Link to='/cart' className='link' onClick={toggleSidebar}>
+    <Link to='/cart' className='link' onClick={toggleSidebar}>
                 Your Cart
             </Link>
             <button className='link' onClick={() => setSidebarOpen(false)}>Close</button>
-  </nav>
+</nav>
 </header>
 
 </Navbar>

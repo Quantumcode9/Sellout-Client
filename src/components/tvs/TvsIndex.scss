@@ -10,6 +10,21 @@
     position: relative;
     width: 100%;
     height: 200px;
+    margin-top: 5px;
+  }
+  @media screen and (max-width: 768px)
+  {
+    .image-container {
+      height: 150px;
+    }
+    
+  }
+  @media screen and (max-width: 576px)
+  {
+    .image-container {
+      height: 100px;
+    }
+    
   }
 
   .image-container img {
@@ -70,7 +85,6 @@
 .slick-dots {
   bottom: -20px;
 }
-
 
 
 

@@ -1,8 +1,5 @@
-// import logo from './logo.svg';
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
-// import TVForm from './components/shared/TVForm';
-// import React, { Component, Fragment } from 'react'
 import React, { useState, Fragment, useEffect } from 'react'
 import { v4 as uuid } from 'uuid'
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
@@ -138,12 +135,12 @@ const App = () => {
 					}
 				/>
 				<Route
-				   path='/cart'
-				   element={
-					   <RequireAuth user={user}>
-						   <Cart user={user} msgAlert={msgAlert}/>
-					   </RequireAuth>
-				   }
+				    path='/cart'
+				    element={
+					<RequireAuth user={user}>
+				        <Cart user={user} msgAlert={msgAlert}/>
+					</RequireAuth>
+				    }
 				/>
 				<Route 
 					path='/search'
@@ -184,16 +181,7 @@ const App = () => {
 					<DeviceShow user={user} msgAlert={msgAlert}/>
 				}
 				/>
-
-             
 			</Routes>
-
-			
-
-
-			
-
-
 			</div>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
