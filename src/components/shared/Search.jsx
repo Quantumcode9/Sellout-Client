@@ -2,18 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { searchProducts, createProduct } from '../../api/product';
 import { Link } from 'react-router-dom';
 import { Card, Button, Form } from 'react-bootstrap';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 
-
 const Search = () => {
     const [keyword, setKeyword] = useState(''); 
     const [products, setProducts] = useState([]);
     const [productData, setProductData] = useState({});
+    const popularSearches = ['routers', 'headphones', 'monitors'];
+
+    const handlePopularSearchClick = (searchTerm) => {
+      setKeyword(searchTerm);
+      searchProducts(searchTerm)
+        .then((response) => {
+          console.log('This came through', response.data.products);
+          setProducts(response.data.products); 
+        })
+        .catch((error) => {
+          console.error('Failed to search products:', error);
+        });
+    };
+
 
     const handleSearch = (event) => {
         event.preventDefault();
@@ -89,10 +101,6 @@ const settings = {
   ]
 };
 
-
-
-
-
 return (
 <div>
   <div>
@@ -107,20 +115,28 @@ return (
     </Form.Group>
     <Button variant="dark" type="submit">
       Search
-    </Button>
+    </Button><br />
+
+ 
+          {popularSearches.map((searchTerm, index) => (
+            <Button key={index} variant="link" onClick={() => handlePopularSearchClick(searchTerm)}>
+              {searchTerm}
+            </Button>
+          ))}
   </Form>
-  </div>
-
-
+        </div>
   <div>
+    
+    <h1>Search Results</h1>
+
 
 <Slider {...settings}>
   {products.map(product => (
-     <Card key={product.id} style={{ width: '18rem', height: '16rem', margin: '3rem', overflow: 'hidden' }}>
+    <Card key={product.id} style={{ width: '18rem', height: '16rem', margin: '3rem', overflow: 'hidden' }}>
   <Card.Header style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular', fontSize: '15px', height: '3rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
     {product.name}
   </Card.Header>
-  <Card.Img variant="top" src={product.image} className="card-img" style={{ maxHeight: '200px', maxWidth: '300px' }} />
+  <Card.Img variant="top" src={product.image} className="card-img" style={{ maxHeight: '200px' }} />
   <Card.Body style={{ display: 'flex',  justifyContent: ' space-evenly', textAlign: 'center', whiteSpace: 'nowrap', height: '3rem' }}>
 
 <Card.Text style={{ textAlign: 'center', color: 'black', textDecoration: product.salePrice < product.regularPrice ? 'line-through' : 'none' }}>
