@@ -254,8 +254,15 @@ $nav-height: 50px;
   .sidebar.open {
     left: 0; 
   }
+
+  @media screen and (min-width: 801px) {
+    .sidebar {
+      display: none; 
+    }
+    
+  }
   
-  @media (max-width: 768px) { 
+  @media (max-width: 801px) { 
     .hamburger {
       display: block; 
       border:  black;
@@ -430,6 +437,7 @@ $nav-height: 50px;
     }
 
   }
+
 
 
   .sidebar .link:hover:after {

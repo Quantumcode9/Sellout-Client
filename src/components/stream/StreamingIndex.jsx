@@ -91,7 +91,6 @@ const StreamingIndex = (props) => {
   </Card.Header>
   <Card.Img variant="top" src={product.image} className="card-img" style={{ maxHeight: '200px', maxWidth: '300px' }} />
   <Card.Body style={{ display: 'flex',  justifyContent: ' space-evenly', textAlign: 'center', whiteSpace: 'nowrap', height: '3rem' }}>
-
   <Card.Text style={{ textAlign: 'center', color: 'black', textDecoration: product.salePrice < product.regularPrice ? 'line-through' : 'none' }}>
     ${product.regularPrice}
   </Card.Text>
@@ -100,7 +99,6 @@ const StreamingIndex = (props) => {
       ${product.salePrice}
     </Card.Text>
   }
-
 </Card.Body>
         <Card.Footer style={{ color: 'white', backgroundColor: 'black', fontFamily: 'Lucida Sans, Lucida Sans Regular' }}>
         <Button variant="light" onClick={() => handleSubmit(product)}>View</Button>

@@ -304,7 +304,22 @@ return (
             User Reviews
         </Card.Header>
         <Card.Body style= {{ backgroundColor: `rgba(0,0,0,0.95)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
+
         <Card.Text>
+{tv.reviews.length > 0 && (
+    (() => {
+    const averageScore = tv.reviews.reduce((total, review) => total + review.rating, 0) / tv.reviews.length;
+    const scoreColor = averageScore >= 8 ? 'green' : averageScore >= 6 ? 'yellow' : 'red';
+
+    return (
+        <span style={{ color: scoreColor }}>
+        Average Score: {averageScore.toFixed(1)}
+        </span>
+    );
+    })()
+)}
+{tv.reviews.length === 0 && <div>No Reviews</div>}
+<hr />
         Seen the {tv.brand} {tv.modelNumber}? 
         <hr/>
         <Button

@@ -10,6 +10,7 @@ const Header = ({ user }) => {
 	const [showUserOptions, setShowUserOptions] = useState(false);
     const [showSideOptions, setShowSideOptions] = useState(false);
 	const [showAdminOptions, setShowAdminOptions] = useState(false);
+	const [showAdminSideOptions, setShowAdminSideOptions] = useState(false);
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
@@ -34,6 +35,10 @@ const Header = ({ user }) => {
 
 	function toggleAdminOptions() {
 	setShowAdminOptions(prevState => !prevState);
+	}
+
+	function toggleAdminSideOptions() {
+		setShowAdminSideOptions(prevState => !prevState);
 	}
 
 const linkStyle = {
@@ -98,9 +103,6 @@ return (
 	</Nav.Item>
 {alwaysOptions}
 {user ? authenticatedOptions : unauthenticatedOptions}
- {/* <Nav.Item className='m-2'>
-	<button onClick={toggleAdminOptions}>Admin</button>
-</Nav.Item>    */}
 <Nav.Item className=''>
   {user && <button className='link' onClick={toggleUserOptions}>User</button>}
 </Nav.Item>
@@ -124,7 +126,10 @@ return (
 	</Nav.Item>
 	</Navbar>
 )}
-{showAdminOptions && (
+<Nav.Item className=''>
+  {user && user.isAdmin && <button className='link' onClick={toggleAdminOptions}>Admin</button>}
+</Nav.Item>
+{user && user.isAdmin && showAdminOptions && (
 	<Navbar bg="" variant="l" className="secondary-navbar">
 	<Nav.Item className=''>
 		<Link to='add-tv' className='link'>
@@ -167,8 +172,8 @@ return (
 	<Link to='/search' className='link' onClick={toggleSidebar}>
 	Search
 	</Link>
-	{user && <button className='link' onClick={toggleUserOptions}>User</button>}
-
+	{user && <button className='link' onClick={toggleSideOptions}>User</button>}
+	
     {showSideOptions && (
 
 	<div className="secondary-sidebar">
@@ -181,18 +186,19 @@ return (
 	</div>
     )}
 
-    {showAdminOptions && (
-    <Navbar bg="" variant="l" className="secondary-sidebar">
-        <Link to='add-tv' className='link'>
+{user && user.isAdmin && <button className='link' onClick={toggleAdminSideOptions}>Admin</button>}
+    {showAdminSideOptions && (
+    <div className="secondary-sidebar">
+        <Link to='add-tv' className='link'onClick={toggleSidebar}>
             Add TV
         </Link>
-        <Link to='add-soundbar' className='link'>
+        <Link to='add-soundbar' className='link'onClick={toggleSidebar}>
             Add Soundbar
         </Link>
-        <Link to='/stream/create' className='link'>
+        <Link to='/stream/create' className='link'onClick={toggleSidebar}>
             Create Device
         </Link>
-    </Navbar>
+    </div>
     )}
     <Link to='/cart' className='link' onClick={toggleSidebar}>
                 Your Cart

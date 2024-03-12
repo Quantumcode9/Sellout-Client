@@ -42,3 +42,57 @@ export const getTVDeals = () => {
 };
 
 
+
+
+//post product review
+export const createProductReview = (productId, user, newReview) => {
+  return axios({
+    url: `${apiUrl}/products/${productId}/reviews`,
+    method: 'POST',
+      headers: {
+      'Authorization': `Bearer ${user.token}`
+    },
+    data: { 
+      review: {
+        ...newReview,
+        user: user._id, 
+        name: user.name 
+      } 
+    }
+  });
+};
+
+//delete product review
+export const deleteProductReview = (productId, reviewId, user) => {
+  return axios({
+    url: `${apiUrl}/products/${productId}/reviews/${reviewId}`,
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+  });
+};
+
+
+// update product review
+export const updateProductReview = (productId, user, updatedReview) => {
+  return axios({
+    url: `${apiUrl}/products/${productId}/reviews/${updatedReview._id}`,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    },
+    data: { 
+      review: {
+        ...updatedReview,
+        user: user._id, 
+        name: user.name 
+      } 
+    }
+  });
+};
+
+
+
+
+
