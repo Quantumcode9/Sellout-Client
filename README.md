@@ -4,14 +4,15 @@
 
 **SellOut** is a full-stack web application designed to simulate an online marketplace for electronics, leveraging Best Buy's API. Built with the MERN stack (MongoDB, Express, React, Node.js), it features authentication, CRUD operations, advanced product search and filtering, and a shopping cart system.
 
+[Check it out here](https://sellout-final.netlify.app)
+
 ### **Technologies Used**
 
 **Frontend:** React.js, Bootstrap/Material-UI for styling
 
 **Backend:** Node.js with Express.js
 
-**Database:** MongoDB
-Authentication: 
+**Database:** MongoDB 
 
 **APIs:** 
 Best Buy's API for product data
@@ -22,7 +23,6 @@ Best Buy's API for product data
 - Advanced search and filtering capabilities
 - Product browsing and detailed view
 - Add to cart and manage cart items
-- Product recommendations
 - Review and rating system for products
 
 
@@ -35,33 +35,31 @@ Best Buy's API for product data
 - *As a user, I want to add products to my cart, view my cart, and have the ability to edit and remove items.*
 - *As a user, I want to add accessories to my purchases, so that I can get all the necessary products at once.*
 
-
-
-<img src="readme/Screenshot.png" alt="alt text" width="300" height="300">
-
 ## WIREFRAMES
 
-### Navbar with dropdown log in.
-<img src="readme/Search.png" width="300" height="400">  
 
 ### Home page to display latest deals
 <img src="readme/Home.png" width="600" height="400">
 
-### Search Filter 
-<img src="readme/SearchFilter.png" width="200" height="400">
+### Product Filter 
+<img src="readme/tvs.png" width="600" height="400">
 
 ### Search Results 
-<img src="readme/SearchResults.png" width="600" height="400">
+<img src="readme/Search.png" width="600" height="400">
 
-### Attachments 
-After adding items to card, users will be redirected to recommended attachments.
+### Product Details Page
 
-<img src="readme/Attachments.png" width="200" height="400">
+<img src="readme/Details.png" width="600" height="400">
 
 ### Cart
 After Adding items to cart, users will have the option to remove items, and edit cart.
 
-<img src="readme/Cart.png" width="200" height="400">
+<img src="readme/Cart.png" width="600" height="400">
+
+
+## ERD
+
+<img src="readme/Screenshot.png" alt="alt text" width="300" height="300">
 
 
 
