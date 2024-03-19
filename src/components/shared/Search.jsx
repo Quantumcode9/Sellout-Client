@@ -103,31 +103,32 @@ const settings = {
 
 return (
 <div>
-  <div>
-  <Form style={{ width: '60%', margin: 'auto', marginTop: '20px', height: '12vw' }} onSubmit={handleSearch}>
-    <Form.Group controlId="searchKeyword" style={{ width: '60%', margin: 'auto', marginTop: '20px' }}>
-      <Form.Control
-        type="text"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-        placeholder="Search for products..."
-      />
-    </Form.Group>
-    <Button variant="dark" type="submit">
-      Search
-    </Button><br />
-
- 
-          {popularSearches.map((searchTerm, index) => (
-            <Button key={index} variant="link" onClick={() => handlePopularSearchClick(searchTerm)}>
-              {searchTerm}
-            </Button>
-          ))}
-  </Form>
-        </div>
-  <div>
-    
-    <h1>Search Results</h1>
+<div className="container">
+  <div className="row justify-content-center">
+    <Form className="col-12 col-md-6" onSubmit={handleSearch}>
+      <Form.Group controlId="searchKeyword">
+        <Form.Control style={{ width: '100%', marginTop: '2rem' }}
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="Search for products..."
+        />
+      </Form.Group>
+      <Button variant="dark" type="submit">
+        Search
+      </Button>
+      <div className="mt-3">
+        {popularSearches.map((searchTerm, index) => (
+          <Button key={index} variant="" onClick={() => handlePopularSearchClick(searchTerm)}>
+            {searchTerm}
+          </Button>
+        ))}
+      </div>
+    </Form>
+  </div>
+</div>
+<div className="container">
+  <h1>Search Results</h1>
 
 
 <Slider {...settings}>

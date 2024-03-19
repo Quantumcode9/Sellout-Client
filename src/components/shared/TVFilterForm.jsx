@@ -2,10 +2,11 @@ import { Form, Button, Col, Row } from 'react-bootstrap';
 
 const FilterForm = ({ handleInputChange, brands}) => (
         <Form>
-            <Row xs={2} sm={2} lg={6} xl={6}>
+            <Row xs={2} sm={2} lg={3} xl={3}>
             <Col md={3}>
-                <Form.Group controlId="formGridSize"style={{ width: '80%', margin: '' }}>
-                <Form.Label style={{ textAlign: 'center' }}>Size</Form.Label>
+                <Form.Group controlId="formGridSize"style={{ width: '80%', margin: '0' }}>
+                <Form.Label style={{ fontSize: '1.1rem', textAlign: 'center'}}>
+                Size</Form.Label>
                 <Form.Control as="select" name="size" onChange={handleInputChange}>
                     <option value="">Select size...</option>
                     <option value="40-43">40-43</option>
@@ -20,8 +21,9 @@ const FilterForm = ({ handleInputChange, brands}) => (
                 </Form.Group>
             </Col>
             <Col md={3}>
-                <Form.Group controlId="formGridRefreshRate" style={{ width: '90%', margin: '' }}>
-                <Form.Label>Refresh Rate</Form.Label>
+                <Form.Group controlId="formGridRefreshRate" style={{ width: '80%', margin: '' }}>
+                <Form.Label style={{ fontSize: '1.1rem', textAlign: 'center'}}
+                >Refresh Rate</Form.Label>
                 <Form.Control as="select" name="refreshRate" onChange={handleInputChange}>
                     <option value="">Select refresh rate...</option>
                     <option value="60">60</option>
@@ -30,21 +32,8 @@ const FilterForm = ({ handleInputChange, brands}) => (
                 </Form.Group>
             </Col>
             <Col md={2}>
-                <Form.Group controlId="formGridAntiGlare">
-                <Form.Label style={{ textAlign: 'center' }}>
-                    Anti-Glare</Form.Label>
-                <Form.Check type="checkbox" name="antiGlare"  onChange={handleInputChange} />
-                </Form.Group>
-            </Col>
-            <Col md={2}>
-                <Form.Group controlId="formGridVRR">
-                <Form.Label>VRR</Form.Label>
-                <Form.Check type="checkbox" name="vrr"  onChange={handleInputChange} />
-                </Form.Group>
-            </Col>
-            <Col md={2}>
                 <Form.Group controlId="formGridBrand" style={{ width: '80%', margin: '' }}>
-                <Form.Label>Brand</Form.Label>
+                <Form.Label style={{ fontSize: '1.1rem', textAlign: 'center'}}>Brand</Form.Label>
                 <Form.Select name="brand" defaultValue="" onChange={handleInputChange}>
                     <option value="">All</option>
                     {brands.map((brand, index) => (
@@ -55,7 +44,7 @@ const FilterForm = ({ handleInputChange, brands}) => (
             </Col>
             <Col md={2}>
                 <Form.Group controlId="formGridPrice" style={{ width: '80%', margin: '' }}>
-                <Form.Label>Price</Form.Label>
+                <Form.Label style={{ fontSize: '1.1rem', textAlign: 'center'}}>Price</Form.Label>
                 <Form.Control as="select" name="price" onChange={handleInputChange}>
                     <option value="">Any</option>
                     <option value="500">Under $500</option>
@@ -65,7 +54,27 @@ const FilterForm = ({ handleInputChange, brands}) => (
                 </Form.Control>
                 </Form.Group>
             </Col>
+                 
+            <Col md={2}>
+                <Form.Group controlId="formGridAntiGlare">
+                <Form.Label style={{ fontSize: '1.1rem', textAlign: 'center'}} >
+                    Anti-Glare</Form.Label>
+                <Form.Check type="checkbox" name="antiGlare"  onChange={handleInputChange} />
+                </Form.Group>
+            </Col>
+
+            <Col md={2}>
+                <Form.Group controlId="formGridVRR">
+                <Form.Label style={{ fontSize: '1.1rem', textAlign: 'center'}}>
+                    VRR</Form.Label>
+                <Form.Check type="checkbox" name="vrr"  onChange={handleInputChange} />
+                </Form.Group>
+            </Col>
+
             </Row>
+       
+
+
         </Form>
 );
 

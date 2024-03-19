@@ -101,8 +101,8 @@ import './ProductShow.scss';
         <Card.Header style={{ backgroundColor: `rgba(0,0,0,0.92)`, color: 'white', fontFamily: 'Lucida Sans ,Lucida Sans Regular' , maxHeight:'40px' }}>
         <h2>{product.name}</h2>
         </Card.Header>
-        <Card.Body style= {{ backgroundColor: `white`, color: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular' }}>
-
+        <Card.Body style= {{ backgroundColor: `white`, color: 'black', fontFamily: 'Lucida Sans ,Lucida Sans Regular', height: '220px' }}>
+         
           <img src={product.image} alt={product.name} className='product-image' style={{ width: '100%', maxHeight: '300px' }} />
           </Card.Body>
 

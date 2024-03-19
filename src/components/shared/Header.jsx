@@ -20,7 +20,7 @@ const Header = ({ user }) => {
 
 	function toggleUserOptions() {
 	setShowUserOptions(prevState => !prevState);
-	// Closes the secondary sidebar after 10 seconds
+
 	if (!showUserOptions) {
 		setTimeout(() => {
 		setShowUserOptions(false);
